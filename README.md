@@ -2,7 +2,7 @@ WUWA VIỆT HOÁ ANDROID
 
 Tác giả app: ngdnguyen
 
-Bản dịch được lấy từ: CallMeDangDev/WuwaVH
+Bản dịch được lấy từ: [CallMeDangDev/WuwaVH](https://github.com/CallMeDangDev/WuwaVH)
 
 Donate ủng hộ:
 
