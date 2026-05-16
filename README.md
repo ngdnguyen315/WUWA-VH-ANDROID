@@ -1,25 +1,21 @@
-# WUWA VIET HOA ANDROID
+# WUWA VIỆT HOÁ ANDROID
 
-Tac gia app: ngdnguyen
+Tác giả app: ngdnguyen
 
-Ban dich duoc lay tu [CallMeDangDev/WuwaVH](https://github.com/CallMeDangDev/WuwaVH)
+Bản dịch được lấy từ: [CallMeDangDev/WuwaVH](https://github.com/CallMeDangDev/WuwaVH)
 
-## Huong dan su dung
+## Hướng dẫn sử dụng
+[HUONG_DAN_SU_DUNG.md](HUONG_DAN_SU_DUNG.md)
 
-Xem huong dan chi tiet tai [HUONG_DAN_SU_DUNG.md](HUONG_DAN_SU_DUNG.md)
-
-## Donate ung ho
+## Donate 
 
 ### MoMo
-
 https://me.momo.vn/ngdnguyen
 
 ### MB Bank
-
-STK: 6196969696969
-
+STK: 6196969696969  
 <p>
   <img src="https://img.vietqr.io/image/MB-6196969696969-qr_only.png" width="300">
 </p>
 
-Neu thay app huu ich, mong ban ung ho mot chut de minh co them dong luc duy tri, cap nhat ban moi va sua loi.
+Nếu thấy app hữu ích, mong bạn ủng hộ một chút để mình có thêm động lực duy trì, cập nhật bản mới, sửa lỗi và tiếp tục làm tốt hơn.
