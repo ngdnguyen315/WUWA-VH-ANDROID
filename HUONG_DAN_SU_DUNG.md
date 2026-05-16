@@ -41,7 +41,6 @@ thì hãy mở game, vào màn hình chính, chờ tải xong rồi thoát ra v�
 
     Bật:
    - `Gỡ lỗi USB`
-   - `Gỡ lỗi không dây / Wireless debugging`
 
 <img src="guide_images/src_assets_guide_xiaomi_buoc42xiaomi.jpg" width="220" />
 
