@@ -1,13 +1,9 @@
 # Hướng dẫn cài đặt và sử dụng WUWA Việt hóa
 
-## 1. Giới thiệu
-
-App này dùng để:
-
+## 1. Giới thiệu app
 - Cài Việt hóa cho Wuthering Waves
 - Đổi font
 - Dùng font riêng
-- Gỡ cài đặt
 
 App dùng **Shizuku** để đọc và ghi dữ liệu game trong `Android/data`, nên bắt buộc phải cài và cấp quyền Shizuku trước khi dùng.
 
@@ -43,21 +39,13 @@ thì hãy mở game, vào màn hình chính, chờ tải xong rồi thoát ra v�
 
 4. Vào **Tùy chọn nhà phát triển**.
 
-5. Bật:
+    Bật:
    - `Gỡ lỗi USB`
    - `Gỡ lỗi không dây / Wireless debugging`
 
 <img src="guide_images/src_assets_guide_xiaomi_buoc42xiaomi.jpg" width="220" />
 
-6. Mở app **Shizuku**.
-
-7. Trong điện thoại, vào:
-   - **Ghép nối**
-   - **Tùy chọn nhà phát triển**
-   - **Gỡ lỗi không dây**
-   - **Ghép đôi thiết bị với mã ghép đôi**
-
-Ảnh minh họa theo đúng thứ tự:
+5. Mở app **Shizuku** >**Ghép nối**>**Tùy chọn nhà phát triển**>**Gỡ lỗi không dây**>**Ghép đôi thiết bị với mã ghép đôi** 
 
 <div>
   <img src="guide_images/src_assets_guide_xiaomi_buoc4xiaomi.jpg" width="180" />
@@ -70,9 +58,7 @@ thì hãy mở game, vào màn hình chính, chờ tải xong rồi thoát ra v�
   <img src="guide_images/src_assets_guide_xiaomi_buoc52xiaomi.jpg" width="180" />
 </div>
 
-8. Kéo thanh thông báo xuống, tìm **Shizuku** và bấm **Nhập mã ghép nối**, sau đó nhập đúng mã ghép nối Android vừa hiện.
-
-Ảnh minh họa theo đúng thứ tự:
+6. Kéo thanh thông báo xuống, tìm **Shizuku** và bấm **Nhập mã ghép nối**, sau đó nhập đúng mã ghép nối Android vừa hiện.
 
 <div>
   <img src="guide_images/src_assets_guide_xiaomi_buoc53xiaomi.jpg" width="180" />
@@ -80,30 +66,16 @@ thì hãy mở game, vào màn hình chính, chờ tải xong rồi thoát ra v�
   <img src="guide_images/src_assets_guide_xiaomi_buoc55xiaomi.jpg" width="180" />
 </div>
 
-9. Sau khi ghép nối xong, quay lại app **Shizuku** và bấm **Bắt đầu**.
+7. Sau khi ghép nối xong, quay lại app **Shizuku** và bấm **Bắt đầu**.
 
 <img src="guide_images/src_assets_guide_xiaomi_buoc6xiaomi.jpg" width="220" />
 
-10. Chờ Shizuku báo đã chạy thành công.
+8. Chờ Shizuku báo đã chạy thành công.
 
 <div>
   <img src="guide_images/src_assets_guide_xiaomi_buoc61xiaomi.jpg" width="220" />
   <img src="guide_images/src_assets_guide_xiaomi_endxiaomi.jpg" width="220" />
 </div>
-
-11. Nếu cần cấp quyền cho app, chấp nhận popup cấp quyền Shizuku.
-
-<img src="guide_images/src_assets_guide_cap.jpg" width="220" />
-
-12. Trạng thái thường gặp:
-
-- Shizuku chạy tốt:
-
-<img src="guide_images/src_v2_assets_png_files_shizuku.jpg" width="220" />
-
-- Shizuku lỗi:
-
-<img src="guide_images/src_v2_assets_png_files_shizuku_error.png" width="220" />
 
 ## 4. Cài app WUWA Việt hóa
 
@@ -155,7 +127,7 @@ Nếu bạn có file `.ttf` hoặc `.otf`:
 3. App sẽ tạo pak từ font đó.
 4. Chờ app áp dụng vào game.
 
-## 9. Gỡ cài đặt
+## 9. Gỡ Việt hoá
 
 1. Mở app.
 2. Bấm `Gỡ cài đặt`.
@@ -182,27 +154,6 @@ Cách xử lý:
 3. Quay lại app.
 4. Bấm `Cấp quyền`.
 
-### Lỗi truy cập file / SAF
-
-Ảnh minh họa:
-
-<div>
-  <img src="guide_images/src_assets_icon_shizuku.png" width="120" />
-  <img src="guide_images/src_assets_images_icon_saf.png" width="120" />
-  <img src="guide_images/src_v2_assets_png_files_saf.jpg" width="220" />
-  <img src="guide_images/src_v2_assets_png_files_saf_error.jpg" width="220" />
-</div>
-
-Cách xử lý:
-
-1. Đóng game.
-2. Đóng app Việt hóa.
-3. Mở lại Shizuku.
-4. Mở lại app.
-5. Bấm `Kiểm tra`.
-6. Nếu cần thì `Gỡ cài đặt` rồi `Cài Việt hóa` lại.
-
-## 11. Mẹo dùng ổn định
 
 - Luôn bật Shizuku trước khi mở app.
 - Không vừa mở game vừa cài hoặc gỡ trong app.
