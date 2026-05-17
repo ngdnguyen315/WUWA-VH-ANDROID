@@ -1,6 +1,6 @@
 ﻿{
-    "version":  "1.4.5",
-    "apk_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.4.5/WUWA_VH_1.4.5.apk",
-    "page_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.4.5",
-    "notes":  "Cập nhật 1.4.5\n\n- Sửa UI phù hợp với các máy DPI nhỏ .\n- Bổ sung config Android, Snap, Mediatek."
+    "version":  "1.4.6",
+    "apk_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.4.6/WUWA_VH_1.4.6.apk",
+    "page_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.4.6",
+    "notes":  "Cập nhật 1.4.6\n\n- Sửa UI phù hợp với các máy DPI nhỏ .\n- Bổ sung config Android, Snap, Mediatek."
 }
