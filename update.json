@@ -1,5 +1,6 @@
-{
-  "version": "1.4.5",
-  "apk_url": "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.4.5/app-debug.apk",
-  "page_url": "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.4.5"
+﻿{
+    "version":  "1.4.5",
+    "apk_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.4.5/WUWA_VH_1.4.5.apk",
+    "page_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.4.5",
+    "notes":  "Cập nhật 1.4.5\n\n- Giao diện hiển thị gọn hơn trên máy DPI nhỏ, bấm nút dễ hơn.\n- Chữ tiếng Việt trong app hiển thị đầy đủ dấu rõ ràng hơn.\n- Mục cấu hình sắp xếp lại theo nhóm `config`, dễ chọn đúng máy hơn.\n- Bổ sung và đồng bộ sẵn cấu hình Android, Snap, Mediatek.\n- File tải về và cập nhật trong app dùng chung tên `WUWA_VH_x.x.x.apk`."
 }
