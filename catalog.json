@@ -1,202 +1,212 @@
 {
-    "fonts":  [
-                  {
-                      "name":  "FixedsysExcelsior.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/FixedsysExcelsior.ttf"
-                  },
-                  {
-                      "name":  "GenshinFont.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/GenshinFont.ttf"
-                  },
-                  {
-                      "name":  "MontserratBold.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/MontserratBold.ttf"
-                  },
-                  {
-                      "name":  "MontserratBoldItalic.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/MontserratBoldItalic.ttf"
-                  },
-                  {
-                      "name":  "MontserratLight.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/MontserratLight.ttf"
-                  },
-                  {
-                      "name":  "MontserratLightItalic.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/MontserratLightItalic.ttf"
-                  },
-                  {
-                      "name":  "Philosopher.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/Philosopher.ttf"
-                  },
-                  {
-                      "name":  "Quicksand.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/Quicksand.ttf"
-                  },
-                  {
-                      "name":  "Signika-Bold.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/Signika-Bold.ttf"
-                  },
-                  {
-                      "name":  "SourceSans3-Black.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SourceSans3-Black.ttf"
-                  },
-                  {
-                      "name":  "SourceSans3-Bold.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SourceSans3-Bold.ttf"
-                  },
-                  {
-                      "name":  "SourceSans3-Medium.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SourceSans3-Medium.ttf"
-                  },
-                  {
-                      "name":  "SourceSans3-SemiBold.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SourceSans3-SemiBold.ttf"
-                  },
-                  {
-                      "name":  "SRNCookieRun-Regular.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SRNCookieRun-Regular.ttf"
-                  },
-                  {
-                      "name":  "SVN-Bali_Script.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Bali_Script.ttf"
-                  },
-                  {
-                      "name":  "SVN-Beloved.otf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Beloved.otf"
-                  },
-                  {
-                      "name":  "SVN-Blenda_Script.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Blenda_Script.ttf"
-                  },
-                  {
-                      "name":  "SVN-Caprica_Script.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Caprica_Script.ttf"
-                  },
-                  {
-                      "name":  "SVN-Clementine.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Clementine.ttf"
-                  },
-                  {
-                      "name":  "SVN-Coco_FY.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Coco_FY.ttf"
-                  },
-                  {
-                      "name":  "SVN-Franko.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Franko.ttf"
-                  },
-                  {
-                      "name":  "SVN-Genica_Pro.otf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Genica_Pro.otf"
-                  },
-                  {
-                      "name":  "SVN-Hole_Hearted.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Hole_Hearted.ttf"
-                  },
-                  {
-                      "name":  "SVN-Internation.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Internation.ttf"
-                  },
-                  {
-                      "name":  "SVN-Larch_Shaded.otf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Larch_Shaded.otf"
-                  },
-                  {
-                      "name":  "SVN-Lobster.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Lobster.ttf"
-                  },
-                  {
-                      "name":  "SVN-Monday.otf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Monday.otf"
-                  },
-                  {
-                      "name":  "SVN-Steady.otf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Steady.otf"
-                  },
-                  {
-                      "name":  "SVN-TradeMark.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-TradeMark.ttf"
-                  },
-                  {
-                      "name":  "TSMaka-SemiboldFont.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/TSMaka-SemiboldFont.ttf"
-                  },
-                  {
-                      "name":  "UTMAlexander.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/UTMAlexander.ttf"
-                  },
-                  {
-                      "name":  "VongXuyen.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/VongXuyen.ttf"
-                  },
-                  {
-                      "name":  "WixMadeforDisplayRegularFont.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/WixMadeforDisplayRegularFont.ttf"
-                  },
-                  {
-                      "name":  "WuWaTechTest.ttf",
-                      "url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/WuWaTechTest.ttf"
-                  }
-              ],
-    "configs":  [
-                    {
-                        "name":  "Android/High-Ultra",
-                        "engine_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Android/High-Ultra/Engine.ini",
-                        "device_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Android/High-Ultra/DeviceProfiles.ini"
-                    },
-                    {
-                        "name":  "Android/Low-Medium_1",
-                        "engine_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Android/Low-Medium_1/Engine.ini",
-                        "device_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Android/Low-Medium_1/DeviceProfiles.ini"
-                    },
-                    {
-                        "name":  "Android/Low-Medium_2",
-                        "engine_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Android/Low-Medium_2/Engine.ini",
-                        "device_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Android/Low-Medium_2/DeviceProfiles.ini"
-                    },
-                    {
-                        "name":  "Android/Ultra Low",
-                        "engine_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Android/Ultra%20Low/Engine.ini",
-                        "device_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Android/Ultra%20Low/DeviceProfiles.ini"
-                    },
-                    {
-                        "name":  "Mediatek/High-Ultra",
-                        "engine_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Mediatek/High-Ultra/Engine.ini",
-                        "device_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Mediatek/High-Ultra/DeviceProfiles.ini"
-                    },
-                    {
-                        "name":  "Mediatek/Low-Medium_1",
-                        "engine_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Mediatek/Low-Medium_1/Engine.ini",
-                        "device_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Mediatek/Low-Medium_1/DeviceProfiles.ini"
-                    },
-                    {
-                        "name":  "Mediatek/Low-Medium_2",
-                        "engine_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Mediatek/Low-Medium_2/Engine.ini",
-                        "device_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Mediatek/Low-Medium_2/DeviceProfiles.ini"
-                    },
-                    {
-                        "name":  "Mediatek/Ultra Low",
-                        "engine_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Mediatek/Ultra%20Low/Engine.ini",
-                        "device_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Mediatek/Ultra%20Low/DeviceProfiles.ini"
-                    },
-                    {
-                        "name":  "Snap/High-Ultra",
-                        "engine_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/High-Ultra/Engine.ini",
-                        "device_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/High-Ultra/DeviceProfiles.ini"
-                    },
-                    {
-                        "name":  "Snap/Low-Medium_1",
-                        "engine_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Low-Medium_1/Engine.ini",
-                        "device_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Low-Medium_1/DeviceProfiles.ini"
-                    },
-                    {
-                        "name":  "Snap/Low-Medium_2",
-                        "engine_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Low-Medium_2/Engine.ini",
-                        "device_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Low-Medium_2/DeviceProfiles.ini"
-                    },
-                    {
-                        "name":  "Snap/Ultra Low",
-                        "engine_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Ultra%20Low/Engine.ini",
-                        "device_url":  "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Ultra%20Low/DeviceProfiles.ini"
-                    }
-                ]
+  "fonts": [
+    {
+      "name": "FixedsysExcelsior.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/FixedsysExcelsior.ttf"
+    },
+    {
+      "name": "GenshinFont.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/GenshinFont.ttf"
+    },
+    {
+      "name": "MontserratBold.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/MontserratBold.ttf"
+    },
+    {
+      "name": "MontserratBoldItalic.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/MontserratBoldItalic.ttf"
+    },
+    {
+      "name": "MontserratLight.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/MontserratLight.ttf"
+    },
+    {
+      "name": "MontserratLightItalic.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/MontserratLightItalic.ttf"
+    },
+    {
+      "name": "Philosopher.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/Philosopher.ttf"
+    },
+    {
+      "name": "Quicksand.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/Quicksand.ttf"
+    },
+    {
+      "name": "Signika-Bold.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/Signika-Bold.ttf"
+    },
+    {
+      "name": "SourceSans3-Black.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SourceSans3-Black.ttf"
+    },
+    {
+      "name": "SourceSans3-Bold.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SourceSans3-Bold.ttf"
+    },
+    {
+      "name": "SourceSans3-Medium.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SourceSans3-Medium.ttf"
+    },
+    {
+      "name": "SourceSans3-SemiBold.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SourceSans3-SemiBold.ttf"
+    },
+    {
+      "name": "SRNCookieRun-Regular.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SRNCookieRun-Regular.ttf"
+    },
+    {
+      "name": "SVN-Bali_Script.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Bali_Script.ttf"
+    },
+    {
+      "name": "SVN-Beloved.otf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Beloved.otf"
+    },
+    {
+      "name": "SVN-Blenda_Script.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Blenda_Script.ttf"
+    },
+    {
+      "name": "SVN-Caprica_Script.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Caprica_Script.ttf"
+    },
+    {
+      "name": "SVN-Clementine.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Clementine.ttf"
+    },
+    {
+      "name": "SVN-Coco_FY.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Coco_FY.ttf"
+    },
+    {
+      "name": "SVN-Franko.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Franko.ttf"
+    },
+    {
+      "name": "SVN-Genica_Pro.otf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Genica_Pro.otf"
+    },
+    {
+      "name": "SVN-Hole_Hearted.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Hole_Hearted.ttf"
+    },
+    {
+      "name": "SVN-Internation.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Internation.ttf"
+    },
+    {
+      "name": "SVN-Larch_Shaded.otf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Larch_Shaded.otf"
+    },
+    {
+      "name": "SVN-Lobster.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Lobster.ttf"
+    },
+    {
+      "name": "SVN-Monday.otf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Monday.otf"
+    },
+    {
+      "name": "SVN-Steady.otf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-Steady.otf"
+    },
+    {
+      "name": "SVN-TradeMark.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/SVN-TradeMark.ttf"
+    },
+    {
+      "name": "TSMaka-SemiboldFont.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/TSMaka-SemiboldFont.ttf"
+    },
+    {
+      "name": "UTMAlexander.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/UTMAlexander.ttf"
+    },
+    {
+      "name": "VongXuyen.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/VongXuyen.ttf"
+    },
+    {
+      "name": "WixMadeforDisplayRegularFont.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/WixMadeforDisplayRegularFont.ttf"
+    },
+    {
+      "name": "WuWaTechTest.ttf",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/fonts/WuWaTechTest.ttf"
+    }
+  ],
+  "configs": [
+    {
+      "name": "Android/High-Ultra",
+      "engine_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Android/High-Ultra/Engine.ini",
+      "device_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Android/High-Ultra/DeviceProfiles.ini"
+    },
+    {
+      "name": "Android/Low-Medium_1",
+      "engine_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Android/Low-Medium_1/Engine.ini",
+      "device_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Android/Low-Medium_1/DeviceProfiles.ini"
+    },
+    {
+      "name": "Android/Low-Medium_2",
+      "engine_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Android/Low-Medium_2/Engine.ini",
+      "device_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Android/Low-Medium_2/DeviceProfiles.ini"
+    },
+    {
+      "name": "Android/Ultra Low",
+      "engine_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Android/Ultra%20Low/Engine.ini",
+      "device_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Android/Ultra%20Low/DeviceProfiles.ini"
+    },
+    {
+      "name": "Mediatek/High-Ultra",
+      "engine_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Mediatek/High-Ultra/Engine.ini",
+      "device_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Mediatek/High-Ultra/DeviceProfiles.ini"
+    },
+    {
+      "name": "Mediatek/Low-Medium_1",
+      "engine_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Mediatek/Low-Medium_1/Engine.ini",
+      "device_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Mediatek/Low-Medium_1/DeviceProfiles.ini"
+    },
+    {
+      "name": "Mediatek/Low-Medium_2",
+      "engine_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Mediatek/Low-Medium_2/Engine.ini",
+      "device_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Mediatek/Low-Medium_2/DeviceProfiles.ini"
+    },
+    {
+      "name": "Mediatek/Ultra Low",
+      "engine_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Mediatek/Ultra%20Low/Engine.ini",
+      "device_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Mediatek/Ultra%20Low/DeviceProfiles.ini"
+    },
+    {
+      "name": "Snap/Max grafic",
+      "engine_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Max%20grafic/Engine.ini",
+      "device_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Max%20grafic/DeviceProfiles.ini"
+    },
+    {
+      "name": "Snap/Balanced Visual",
+      "engine_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Balanced%20Visual/Engine.ini",
+      "device_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Balanced%20Visual/DeviceProfiles.ini"
+    },
+    {
+      "name": "Snap/High-Ultra",
+      "engine_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/High-Ultra/Engine.ini",
+      "device_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/High-Ultra/DeviceProfiles.ini"
+    },
+    {
+      "name": "Snap/Low-Medium_1",
+      "engine_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Low-Medium_1/Engine.ini",
+      "device_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Low-Medium_1/DeviceProfiles.ini"
+    },
+    {
+      "name": "Snap/Low-Medium_2",
+      "engine_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Low-Medium_2/Engine.ini",
+      "device_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Low-Medium_2/DeviceProfiles.ini"
+    },
+    {
+      "name": "Snap/Ultra Low",
+      "engine_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Ultra%20Low/Engine.ini",
+      "device_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Ultra%20Low/DeviceProfiles.ini"
+    }
+  ]
 }
