@@ -1,11 +1,20 @@
 # WUWA VIỆT HOÁ ANDROID
+
 <a href="https://discord.gg/Zrsuf8gxPh">
   <img src="https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white&style=for-the-badge"/>
 </a>
 
-Tác giả app: ngdnguyen
+<a href="https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/latest">
+  <img src="https://img.shields.io/github/v/release/ngdnguyen/WUWA-VH-ANDROID?style=for-the-badge&label=Latest%20APK"/>
+</a>
 
-Bản dịch được lấy từ: [CallMeDangDev/WuwaVH](https://github.com/CallMeDangDev/WuwaVH)
+<a href="https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases">
+  <img src="https://img.shields.io/github/downloads/ngdnguyen/WUWA-VH-ANDROID/total.svg?style=for-the-badge"/>
+</a>
+
+<a href="https://fb.com/ngdnguyen315">
+  <img src="https://img.shields.io/badge/Facebook-Liên%20hệ-1877F2?style=for-the-badge&logo=facebook&logoColor=white"/>
+</a>
 
 ## Hướng dẫn sử dụng
 [HUONG_DAN_SU_DUNG.md](HUONG_DAN_SU_DUNG.md)
@@ -13,6 +22,9 @@ Bản dịch được lấy từ: [CallMeDangDev/WuwaVH](https://github.com/Call
 ## Donate 
 
 ### MoMo
+<a href="https://me.momo.vn/ngdnguyen">
+  <img src="https://img.shields.io/badge/MoMo-Ủng%20hộ-d82d8b?style=for-the-badge&logo=monero&logoColor=white"/>
+</a>
 https://me.momo.vn/ngdnguyen
 
 ### MB Bank
@@ -22,3 +34,7 @@ STK: 6196969696969
 </p>
 
 Nếu thấy app hữu ích, mong bạn ủng hộ một chút để mình có thêm động lực duy trì, cập nhật bản mới, sửa lỗi và tiếp tục làm tốt hơn.
+
+Tác giả app: [ngdnguyen](https://github.com/ngdnguyen)
+
+Bản dịch được lấy từ: [CallMeDangDev/WuwaVH](https://github.com/CallMeDangDev/WuwaVH)
