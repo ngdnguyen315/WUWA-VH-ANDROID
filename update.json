@@ -1,6 +1,6 @@
 ﻿{
-    "version":  "1.4.8",
-    "apk_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.4.8/WUWA_VH_1.4.8.apk",
-    "page_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.4.8",
-    "notes":  "Cập nhật 1.4.8\n\n- Thêm lại 2 config Snap cũ\n- Tối ưu lại config High-Ultra\n- Thay đổi thứ tự sắp xếp config"
+    "version":  "1.4.9",
+    "apk_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.4.9/WUWA_VH_1.4.9.apk",
+    "page_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.4.9",
+    "notes":  "Cập nhật 1.4.9\n\n-Thêm tuỳ chọn quyền root cho máy có root\n-Khi cấp root cho app(hay cấp root cho shizuku) khi thoát game vào lại không bị mất việt hoá\n-Nếu dùng root, khi gỡ VH có thể bị lỗi hãy ấn gỡ lại vài lần để gỡ sạch"
 }
