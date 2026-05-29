@@ -26,7 +26,7 @@ thì hãy mở game, vào màn hình chính, chờ tải xong rồi thoát ra v�
 
 1. Tải và cài app **Shizuku** từ CH Play hoặc GitHub chính chủ.
    
-**Lưu ý nên sử dung bản [shizuku ](https://github.com/RikkaApps/Shizuku/releases/latest) mới nhất tại đây [https://github.com/RikkaApps/Shizuku/releases/latest](url) để  tránh gặp lỗi**
+**Lưu ý nên sử dung bản [shizuku ](https://github.com/RikkaApps/Shizuku/releases/latest) mới nhất tại đây https://github.com/RikkaApps/Shizuku/releases/latest để  tránh gặp lỗi**
 
 <img src="guide_images/src_assets_guide_installshizuku.jpg" width="220" />
 
