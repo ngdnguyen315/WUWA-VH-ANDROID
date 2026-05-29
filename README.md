@@ -18,7 +18,7 @@
 
 ## Hướng dẫn sử dụng
 [HUONG_DAN_SU_DUNG.md](HUONG_DAN_SU_DUNG.md)
-## Lưu ý nên sử dung bản [shizuku ](https://github.com/RikkaApps/Shizuku/releases/latest) mới nhất tại đây [https://github.com/RikkaApps/Shizuku/releases/latest](url) để  tránh gặp lỗi
+## Lưu ý nên sử dung bản [shizuku ](https://github.com/RikkaApps/Shizuku/releases/latest) mới nhất tại đây [https://github.com/RikkaApps/Shizuku/releases/latest](https://github.com/RikkaApps/Shizuku/releases/latest) để  tránh gặp lỗi
 ## Donate 
 
 ### MoMo
