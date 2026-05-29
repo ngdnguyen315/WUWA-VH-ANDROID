@@ -1,7 +1,7 @@
 # Hướng dẫn cài đặt và sử dụng WUWA Việt hóa
 
 ## 1. Giới thiệu app
-- Cài Việt hóa cho Wuthering Waves
+- Cài Việt hóa cho Wuthering Waves,Neverness to Everness
 - Đổi font
 - Dùng font riêng
 
@@ -15,7 +15,7 @@ Bạn nên chuẩn bị:
 - Game đã mở ít nhất 1 lần
 - Tốt nhất nên vào game để game tải đủ tài nguyên trước
 - Mạng ổn định
-
+- ## Lưu ý không cài bất kỳ app Việt Hoá nào khác
 Nếu app báo:
 
 `Không tìm thấy dữ liệu game. Hãy mở game tải tài nguyên trước.`
@@ -26,7 +26,7 @@ thì hãy mở game, vào màn hình chính, chờ tải xong rồi thoát ra v�
 
 1. Tải và cài app **Shizuku** từ CH Play hoặc GitHub chính chủ.
    
-**Lưu ý nên sử dung bản [shizuku ](https://github.com/RikkaApps/Shizuku/releases/latest) mới nhất tại đây [https://github.com/RikkaApps/Shizuku/releases/latest](url) để  tránh gặp lỗi**
+**Lưu ý nên sử dung bản [shizuku ](https://github.com/RikkaApps/Shizuku/releases/latest) mới nhất tại đây https://github.com/RikkaApps/Shizuku/releases/latest để  tránh gặp lỗi**
 
 <img src="guide_images/src_assets_guide_installshizuku.jpg" width="220" />
 
@@ -79,8 +79,9 @@ thì hãy mở game, vào màn hình chính, chờ tải xong rồi thoát ra v�
 </div>
 
 ## 4. Cài app WUWA Việt hóa
+- ## Lưu ý không cài bất kỳ app Việt Hoá nào khác
 
-1. Tải file APK của app.
+1. Tải file [APK](https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/latest) của app. https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/latest
 2. Cài APK vào máy.
 3. Mở app.
 
@@ -125,13 +126,13 @@ Nếu bạn có file `.ttf` hoặc `.otf`:
 
 1. Bấm `Font riêng`.
 2. Chọn file font.
-3. App sẽ tạo pak từ font đó.
+3. App sẽ tạo font.
 4. Chờ app áp dụng vào game.
 
 ## 9. Gỡ Việt hoá
 
 1. Mở app.
-2. Bấm `Gỡ cài đặt`.
+2. Bấm `Gỡ Việt hoá`.
 3. Chờ app xử lý xong.
 
 ## 10. Các lỗi thường gặp
