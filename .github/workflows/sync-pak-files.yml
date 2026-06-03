@@ -1,0 +1,169 @@
+name: Sync PAK Files
+
+on:
+  schedule:
+    # Chạy mỗi 2 giờ để kiểm tra update
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
+    # Cho phép chạy thủ công
+
+permissions:
+  contents: write
+
+jobs:
+  sync-pak:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+
+      # ─────────────────────────────────────────────
+      # 1. Lấy WuWaVHCN_99_P.pak (từ CallMeDangDev/WuwaVH)
+      # ─────────────────────────────────────────────
+      - name: Get latest release tag of CallMeDangDev/WuwaVH
+        id: cn_release
+        run: |
+          LATEST=$(curl -sL \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/CallMeDangDev/WuwaVH/releases/latest \
+            | jq -r '.tag_name')
+          echo "tag=$LATEST" >> $GITHUB_OUTPUT
+          echo "CN latest tag: $LATEST"
+
+      - name: Read cached CN tag
+        id: cn_cache
+        run: |
+          if [ -f ".github/pak_versions/cn_tag.txt" ]; then
+            CACHED=$(cat .github/pak_versions/cn_tag.txt)
+          else
+            CACHED=""
+          fi
+          echo "cached=$CACHED" >> $GITHUB_OUTPUT
+          echo "CN cached tag: $CACHED"
+
+      - name: Download WuWaVHCN_99_P.pak if updated
+        if: steps.cn_release.outputs.tag != steps.cn_cache.outputs.cached || steps.cn_cache.outputs.cached == ''
+        run: |
+          echo "Downloading WuWaVH_99_P.pak (tag: ${{ steps.cn_release.outputs.tag }})..."
+          curl -L \
+            "https://github.com/CallMeDangDev/WuwaVH/releases/latest/download/WuWaVH_99_P.pak" \
+            -o "WuWaVHCN_99_P.pak"
+          echo "Download complete. File size: $(du -sh WuWaVHCN_99_P.pak | cut -f1)"
+
+          # Lưu tag mới
+          mkdir -p .github/pak_versions
+          echo "${{ steps.cn_release.outputs.tag }}" > .github/pak_versions/cn_tag.txt
+          echo "CN_UPDATED=true" >> $GITHUB_ENV
+
+      # ─────────────────────────────────────────────
+      # 2. Lấy WuWaVHEN_99_P.pak (từ Lai-Hoang/wuwa-viet-hoa)
+      # ─────────────────────────────────────────────
+      - name: Get latest release info of Lai-Hoang/wuwa-viet-hoa
+        id: en_release
+        run: |
+          RELEASE_JSON=$(curl -sL \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/Lai-Hoang/wuwa-viet-hoa/releases/latest)
+          
+          LATEST_TAG=$(echo "$RELEASE_JSON" | jq -r '.tag_name')
+          
+          # Tìm file zip khớp pattern tieng.viet.ww.EN_to_Vi (không phân biệt chữ hoa/thường)
+          ZIP_URL=$(echo "$RELEASE_JSON" | jq -r '.assets[] | select(.name | test("tieng.?viet.?ww.?EN_to_Vi"; "i")) | .browser_download_url' | head -n1)
+          ZIP_NAME=$(echo "$RELEASE_JSON" | jq -r '.assets[] | select(.name | test("tieng.?viet.?ww.?EN_to_Vi"; "i")) | .name' | head -n1)
+          
+          echo "tag=$LATEST_TAG" >> $GITHUB_OUTPUT
+          echo "zip_url=$ZIP_URL" >> $GITHUB_OUTPUT
+          echo "zip_name=$ZIP_NAME" >> $GITHUB_OUTPUT
+          echo "EN latest tag: $LATEST_TAG"
+          echo "ZIP file found: $ZIP_NAME"
+          echo "ZIP URL: $ZIP_URL"
+
+      - name: Read cached EN tag
+        id: en_cache
+        run: |
+          if [ -f ".github/pak_versions/en_tag.txt" ]; then
+            CACHED=$(cat .github/pak_versions/en_tag.txt)
+          else
+            CACHED=""
+          fi
+          echo "cached=$CACHED" >> $GITHUB_OUTPUT
+          echo "EN cached tag: $CACHED"
+
+      - name: Download and extract WuWaVHEN_99_P.pak if updated
+        if: steps.en_release.outputs.tag != steps.en_cache.outputs.cached || steps.en_cache.outputs.cached == ''
+        run: |
+          ZIP_URL="${{ steps.en_release.outputs.zip_url }}"
+          ZIP_NAME="${{ steps.en_release.outputs.zip_name }}"
+          
+          if [ -z "$ZIP_URL" ] || [ "$ZIP_URL" = "null" ]; then
+            echo "❌ Không tìm thấy file zip khớp pattern 'tieng.viet.ww.EN_to_Vi' trong release mới nhất!"
+            echo "Các file có trong release:"
+            curl -sL \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              https://api.github.com/repos/Lai-Hoang/wuwa-viet-hoa/releases/latest \
+              | jq -r '.assets[].name'
+            exit 1
+          fi
+          
+          echo "Downloading $ZIP_NAME (tag: ${{ steps.en_release.outputs.tag }})..."
+          curl -L "$ZIP_URL" -o "/tmp/vn_pack.zip"
+          echo "Download complete. File size: $(du -sh /tmp/vn_pack.zip | cut -f1)"
+          
+          # Unzip và lấy TiengViet_99_P.pak
+          mkdir -p /tmp/vn_extract
+          unzip -o "/tmp/vn_pack.zip" -d /tmp/vn_extract
+          
+          echo "Files extracted:"
+          ls -la /tmp/vn_extract/
+          
+          # Tìm TiengViet_99_P.pak (đệ quy nếu trong subfolder)
+          PAK_FILE=$(find /tmp/vn_extract -name "TiengViet_99_P.pak" | head -n1)
+          
+          if [ -z "$PAK_FILE" ]; then
+            echo "❌ Không tìm thấy TiengViet_99_P.pak trong file zip!"
+            find /tmp/vn_extract -type f
+            exit 1
+          fi
+          
+          echo "Found: $PAK_FILE"
+          cp "$PAK_FILE" "WuWaVHEN_99_P.pak"
+          echo "Copied to WuWaVHEN_99_P.pak. Size: $(du -sh WuWaVHEN_99_P.pak | cut -f1)"
+          
+          # Lưu tag mới
+          mkdir -p .github/pak_versions
+          echo "${{ steps.en_release.outputs.tag }}" > .github/pak_versions/en_tag.txt
+          echo "EN_UPDATED=true" >> $GITHUB_ENV
+
+      # ─────────────────────────────────────────────
+      # 3. Commit & Push nếu có thay đổi
+      # ─────────────────────────────────────────────
+      - name: Commit and push updated PAK files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git add WuWaVHCN_99_P.pak WuWaVHEN_99_P.pak .github/pak_versions/ 2>/dev/null || true
+          
+          # Kiểm tra có thay đổi gì không
+          if git diff --cached --quiet; then
+            echo "✅ Không có thay đổi nào, bỏ qua commit."
+          else
+            COMMIT_MSG="🤖 Auto-sync PAK files"
+            
+            if [ "${CN_UPDATED}" = "true" ]; then
+              COMMIT_MSG="$COMMIT_MSG | CN: ${{ steps.cn_release.outputs.tag }}"
+            fi
+            if [ "${EN_UPDATED}" = "true" ]; then
+              COMMIT_MSG="$COMMIT_MSG | EN: ${{ steps.en_release.outputs.tag }}"
+            fi
+            
+            git commit -m "$COMMIT_MSG"
+            git push
+            echo "✅ Pushed commit: $COMMIT_MSG"
+          fi
