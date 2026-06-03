@@ -1,6 +1,6 @@
 # WUWA VIỆT HOÁ ANDROID
 
-<a href="https://discord.gg/Zrsuf8gxPh">
+<a href="https://discord.gg">
   <img src="https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white&style=for-the-badge"/>
 </a>
 
@@ -18,7 +18,7 @@
 
 ## Hướng dẫn sử dụng
 [HUONG_DAN_SU_DUNG.md](HUONG_DAN_SU_DUNG.md)
-## Lưu ý nên sử dung bản [shizuku ](https://github.com/RikkaApps/Shizuku/releases/latest) mới nhất tại đây [https://github.com/RikkaApps/Shizuku/releases/latest](https://github.com/RikkaApps/Shizuku/releases/latest) để  tránh gặp lỗi
+## Lưu ý nên sử dụng bản [shizuku ](https://github.com/RikkaApps/Shizuku/releases/latest) mới nhất tại đây [https://github.com/RikkaApps/Shizuku/releases/latest](https://github.com/RikkaApps/Shizuku/releases/latest) để  tránh gặp lỗi
 ## Donate 
 
 ### MoMo
