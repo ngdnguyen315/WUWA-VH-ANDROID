@@ -21,132 +21,76 @@ jobs:
           fetch-depth: 1
 
       # ─────────────────────────────────────────────
-      # 1. Lấy WuWaVHCN_99_P.pak (từ CallMeDangDev/WuwaVH)
-      #    So sánh SHA256 hash để phát hiện update kể cả khi tag không đổi
+      # 1. WuWaVHCN_99_P.pak (CallMeDangDev/WuwaVH)
       # ─────────────────────────────────────────────
-      - name: Get latest release info of CallMeDangDev/WuwaVH
-        id: cn_release
+      - name: Check CN pak update time
+        id: cn
         run: |
-          RELEASE_JSON=$(curl -sL \
+          RELEASE=$(curl -sL \
             -H "Accept: application/vnd.github+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             https://api.github.com/repos/CallMeDangDev/WuwaVH/releases/latest)
 
-          TAG=$(echo "$RELEASE_JSON" | jq -r '.tag_name')
-          # Lấy updated_at của asset WuWaVH_99_P.pak làm dấu hiệu thay đổi
-          ASSET_UPDATED=$(echo "$RELEASE_JSON" | jq -r '.assets[] | select(.name == "WuWaVH_99_P.pak") | .updated_at')
-          ASSET_SIZE=$(echo "$RELEASE_JSON" | jq -r '.assets[] | select(.name == "WuWaVH_99_P.pak") | .size')
+          TAG=$(echo "$RELEASE" | jq -r '.tag_name')
+          UPDATED=$(echo "$RELEASE" | jq -r '.assets[] | select(.name == "WuWaVH_99_P.pak") | .updated_at')
 
-          echo "tag=$TAG" >> $GITHUB_OUTPUT
-          echo "asset_updated=$ASSET_UPDATED" >> $GITHUB_OUTPUT
-          echo "asset_size=$ASSET_SIZE" >> $GITHUB_OUTPUT
-          echo "CN tag: $TAG | updated_at: $ASSET_UPDATED | size: $ASSET_SIZE"
+          echo "tag=$TAG"       >> $GITHUB_OUTPUT
+          echo "updated=$UPDATED" >> $GITHUB_OUTPUT
+          echo "CN: tag=$TAG | updated_at=$UPDATED"
 
-      - name: Read cached CN fingerprint
-        id: cn_cache
+          # Đọc thời gian đã lưu
+          CACHE=".github/pak_versions/cn_updated_at.txt"
+          OLD_TIME=$([ -f "$CACHE" ] && cat "$CACHE" || echo "")
+          echo "old_time=$OLD_TIME" >> $GITHUB_OUTPUT
+          echo "CN cached: $OLD_TIME"
+
+      - name: Download WuWaVHCN_99_P.pak
+        if: steps.cn.outputs.updated != steps.cn.outputs.old_time || steps.cn.outputs.old_time == ''
         run: |
-          CACHE_FILE=".github/pak_versions/cn_fingerprint.txt"
-          if [ -f "$CACHE_FILE" ]; then
-            CACHED=$(cat "$CACHE_FILE")
-          else
-            CACHED=""
-          fi
-          echo "cached=$CACHED" >> $GITHUB_OUTPUT
-          echo "CN cached fingerprint: $CACHED"
+          echo "🔄 CN pak thay đổi lúc ${{ steps.cn.outputs.updated }} (cũ: ${{ steps.cn.outputs.old_time }})"
+          curl -L \
+            "https://github.com/CallMeDangDev/WuwaVH/releases/latest/download/WuWaVH_99_P.pak" \
+            -o "WuWaVHCN_99_P.pak"
+          echo "✅ Tải xong: $(du -sh WuWaVHCN_99_P.pak | cut -f1)"
 
-      - name: Download WuWaVHCN_99_P.pak if updated
-        id: cn_download
-        run: |
-          # Fingerprint = tag + updated_at + size (bắt được cả đè file lên cùng tag)
-          NEW_FP="${{ steps.cn_release.outputs.tag }}|${{ steps.cn_release.outputs.asset_updated }}|${{ steps.cn_release.outputs.asset_size }}"
-          CACHED_FP="${{ steps.cn_cache.outputs.cached }}"
-
-          if [ "$NEW_FP" = "$CACHED_FP" ] && [ -n "$CACHED_FP" ]; then
-            echo "✅ CN pak không thay đổi, bỏ qua."
-            echo "updated=false" >> $GITHUB_OUTPUT
-          else
-            echo "🔄 Phát hiện CN pak thay đổi!"
-            echo "  Cũ: $CACHED_FP"
-            echo "  Mới: $NEW_FP"
-
-            curl -L \
-              "https://github.com/CallMeDangDev/WuwaVH/releases/latest/download/WuWaVH_99_P.pak" \
-              -o "WuWaVHCN_99_P.pak"
-            echo "Download xong. Kích thước: $(du -sh WuWaVHCN_99_P.pak | cut -f1)"
-
-            # Tính SHA256 để xác nhận file thực sự khác
-            NEW_HASH=$(sha256sum WuWaVHCN_99_P.pak | cut -d' ' -f1)
-            echo "SHA256: $NEW_HASH"
-
-            # So sánh với hash cũ nếu có
-            HASH_FILE=".github/pak_versions/cn_hash.txt"
-            if [ -f "$HASH_FILE" ]; then
-              OLD_HASH=$(cat "$HASH_FILE")
-            else
-              OLD_HASH=""
-            fi
-
-            if [ "$NEW_HASH" = "$OLD_HASH" ]; then
-              echo "✅ SHA256 giống nhau, file không thực sự thay đổi."
-              echo "updated=false" >> $GITHUB_OUTPUT
-            else
-              echo "✅ SHA256 khác → file thực sự mới!"
-              mkdir -p .github/pak_versions
-              echo "$NEW_FP" > .github/pak_versions/cn_fingerprint.txt
-              echo "$NEW_HASH" > .github/pak_versions/cn_hash.txt
-              echo "updated=true" >> $GITHUB_OUTPUT
-              echo "CN_TAG=${{ steps.cn_release.outputs.tag }}" >> $GITHUB_ENV
-            fi
-          fi
+          mkdir -p .github/pak_versions
+          echo "${{ steps.cn.outputs.updated }}" > .github/pak_versions/cn_updated_at.txt
+          echo "CN_TAG=${{ steps.cn.outputs.tag }}" >> $GITHUB_ENV
 
       # ─────────────────────────────────────────────
-      # 2. Lấy WuWaVHEN_99_P.pak (từ Lai-Hoang/wuwa-viet-hoa)
-      #    So sánh SHA256 hash để phát hiện update kể cả khi tag không đổi
+      # 2. WuWaVHEN_99_P.pak (Lai-Hoang/wuwa-viet-hoa)
       # ─────────────────────────────────────────────
-      - name: Get latest release info of Lai-Hoang/wuwa-viet-hoa
-        id: en_release
+      - name: Check EN pak update time
+        id: en
         run: |
-          RELEASE_JSON=$(curl -sL \
+          RELEASE=$(curl -sL \
             -H "Accept: application/vnd.github+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             https://api.github.com/repos/Lai-Hoang/wuwa-viet-hoa/releases/latest)
 
-          TAG=$(echo "$RELEASE_JSON" | jq -r '.tag_name')
+          TAG=$(echo "$RELEASE" | jq -r '.tag_name')
+          ZIP_URL=$(echo "$RELEASE" | jq -r '.assets[] | select(.name | test("tieng.?viet.?ww.?EN_to_Vi"; "i")) | .browser_download_url' | head -n1)
+          ZIP_NAME=$(echo "$RELEASE" | jq -r '.assets[] | select(.name | test("tieng.?viet.?ww.?EN_to_Vi"; "i")) | .name' | head -n1)
+          UPDATED=$(echo "$RELEASE" | jq -r '.assets[] | select(.name | test("tieng.?viet.?ww.?EN_to_Vi"; "i")) | .updated_at' | head -n1)
 
-          # Tìm file zip khớp pattern tieng.viet.ww.EN_to_Vi (không phân biệt hoa/thường)
-          ZIP_URL=$(echo "$RELEASE_JSON" | jq -r '.assets[] | select(.name | test("tieng.?viet.?ww.?EN_to_Vi"; "i")) | .browser_download_url' | head -n1)
-          ZIP_NAME=$(echo "$RELEASE_JSON" | jq -r '.assets[] | select(.name | test("tieng.?viet.?ww.?EN_to_Vi"; "i")) | .name' | head -n1)
-          ASSET_UPDATED=$(echo "$RELEASE_JSON" | jq -r '.assets[] | select(.name | test("tieng.?viet.?ww.?EN_to_Vi"; "i")) | .updated_at' | head -n1)
-          ASSET_SIZE=$(echo "$RELEASE_JSON" | jq -r '.assets[] | select(.name | test("tieng.?viet.?ww.?EN_to_Vi"; "i")) | .size' | head -n1)
-
-          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "tag=$TAG"         >> $GITHUB_OUTPUT
           echo "zip_url=$ZIP_URL" >> $GITHUB_OUTPUT
           echo "zip_name=$ZIP_NAME" >> $GITHUB_OUTPUT
-          echo "asset_updated=$ASSET_UPDATED" >> $GITHUB_OUTPUT
-          echo "asset_size=$ASSET_SIZE" >> $GITHUB_OUTPUT
-          echo "EN tag: $TAG | file: $ZIP_NAME | updated_at: $ASSET_UPDATED | size: $ASSET_SIZE"
+          echo "updated=$UPDATED" >> $GITHUB_OUTPUT
+          echo "EN: tag=$TAG | file=$ZIP_NAME | updated_at=$UPDATED"
 
-      - name: Read cached EN fingerprint
-        id: en_cache
+          # Đọc thời gian đã lưu
+          CACHE=".github/pak_versions/en_updated_at.txt"
+          OLD_TIME=$([ -f "$CACHE" ] && cat "$CACHE" || echo "")
+          echo "old_time=$OLD_TIME" >> $GITHUB_OUTPUT
+          echo "EN cached: $OLD_TIME"
+
+      - name: Download and extract WuWaVHEN_99_P.pak
+        if: steps.en.outputs.updated != steps.en.outputs.old_time || steps.en.outputs.old_time == ''
         run: |
-          CACHE_FILE=".github/pak_versions/en_fingerprint.txt"
-          if [ -f "$CACHE_FILE" ]; then
-            CACHED=$(cat "$CACHE_FILE")
-          else
-            CACHED=""
-          fi
-          echo "cached=$CACHED" >> $GITHUB_OUTPUT
-          echo "EN cached fingerprint: $CACHED"
-
-      - name: Download and extract WuWaVHEN_99_P.pak if updated
-        id: en_download
-        run: |
-          ZIP_URL="${{ steps.en_release.outputs.zip_url }}"
-          ZIP_NAME="${{ steps.en_release.outputs.zip_name }}"
-
+          ZIP_URL="${{ steps.en.outputs.zip_url }}"
           if [ -z "$ZIP_URL" ] || [ "$ZIP_URL" = "null" ]; then
-            echo "❌ Không tìm thấy file zip khớp pattern 'tieng.viet.ww.EN_to_Vi' trong release!"
-            echo "Các file có trong release:"
+            echo "❌ Không tìm thấy file zip EN_to_Vi trong release!"
             curl -sL \
               -H "Accept: application/vnd.github+json" \
               -H "X-GitHub-Api-Version: 2022-11-28" \
@@ -155,85 +99,44 @@ jobs:
             exit 1
           fi
 
-          # Fingerprint = tag + zip_name + updated_at + size
-          NEW_FP="${{ steps.en_release.outputs.tag }}|$ZIP_NAME|${{ steps.en_release.outputs.asset_updated }}|${{ steps.en_release.outputs.asset_size }}"
-          CACHED_FP="${{ steps.en_cache.outputs.cached }}"
+          echo "🔄 EN pak thay đổi lúc ${{ steps.en.outputs.updated }} (cũ: ${{ steps.en.outputs.old_time }})"
+          curl -L "$ZIP_URL" -o /tmp/vn_pack.zip
+          echo "✅ Tải xong: $(du -sh /tmp/vn_pack.zip | cut -f1)"
 
-          if [ "$NEW_FP" = "$CACHED_FP" ] && [ -n "$CACHED_FP" ]; then
-            echo "✅ EN pak không thay đổi, bỏ qua."
-            echo "updated=false" >> $GITHUB_OUTPUT
-          else
-            echo "🔄 Phát hiện EN pak thay đổi!"
-            echo "  Cũ: $CACHED_FP"
-            echo "  Mới: $NEW_FP"
+          mkdir -p /tmp/vn_extract
+          unzip -o /tmp/vn_pack.zip -d /tmp/vn_extract
 
-            echo "Downloading $ZIP_NAME..."
-            curl -L "$ZIP_URL" -o "/tmp/vn_pack.zip"
-            echo "Download xong. Kích thước: $(du -sh /tmp/vn_pack.zip | cut -f1)"
-
-            # Unzip và lấy TiengViet_99_P.pak
-            mkdir -p /tmp/vn_extract
-            unzip -o "/tmp/vn_pack.zip" -d /tmp/vn_extract
-
-            echo "Files extracted:"
+          PAK=$(find /tmp/vn_extract -name "TiengViet_99_P.pak" | head -n1)
+          if [ -z "$PAK" ]; then
+            echo "❌ Không tìm thấy TiengViet_99_P.pak trong zip!"
             find /tmp/vn_extract -type f
-
-            PAK_FILE=$(find /tmp/vn_extract -name "TiengViet_99_P.pak" | head -n1)
-
-            if [ -z "$PAK_FILE" ]; then
-              echo "❌ Không tìm thấy TiengViet_99_P.pak trong file zip!"
-              exit 1
-            fi
-
-            cp "$PAK_FILE" "WuWaVHEN_99_P.pak"
-            echo "Copied → WuWaVHEN_99_P.pak. Kích thước: $(du -sh WuWaVHEN_99_P.pak | cut -f1)"
-
-            # Tính SHA256 để xác nhận file thực sự khác
-            NEW_HASH=$(sha256sum WuWaVHEN_99_P.pak | cut -d' ' -f1)
-            echo "SHA256: $NEW_HASH"
-
-            HASH_FILE=".github/pak_versions/en_hash.txt"
-            if [ -f "$HASH_FILE" ]; then
-              OLD_HASH=$(cat "$HASH_FILE")
-            else
-              OLD_HASH=""
-            fi
-
-            if [ "$NEW_HASH" = "$OLD_HASH" ]; then
-              echo "✅ SHA256 giống nhau, file không thực sự thay đổi."
-              echo "updated=false" >> $GITHUB_OUTPUT
-            else
-              echo "✅ SHA256 khác → file thực sự mới!"
-              mkdir -p .github/pak_versions
-              echo "$NEW_FP" > .github/pak_versions/en_fingerprint.txt
-              echo "$NEW_HASH" > .github/pak_versions/en_hash.txt
-              echo "updated=true" >> $GITHUB_OUTPUT
-              echo "EN_TAG=${{ steps.en_release.outputs.tag }}" >> $GITHUB_ENV
-            fi
+            exit 1
           fi
 
+          cp "$PAK" "WuWaVHEN_99_P.pak"
+          echo "✅ Sao chép xong: $(du -sh WuWaVHEN_99_P.pak | cut -f1)"
+
+          mkdir -p .github/pak_versions
+          echo "${{ steps.en.outputs.updated }}" > .github/pak_versions/en_updated_at.txt
+          echo "EN_TAG=${{ steps.en.outputs.tag }}" >> $GITHUB_ENV
+
       # ─────────────────────────────────────────────
-      # 3. Commit & Push nếu có thay đổi thực sự
+      # 3. Commit & Push
       # ─────────────────────────────────────────────
-      - name: Commit and push updated PAK files
+      - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add \
-            WuWaVHCN_99_P.pak \
-            WuWaVHEN_99_P.pak \
-            .github/pak_versions/ \
-            2>/dev/null || true
+          git add WuWaVHCN_99_P.pak WuWaVHEN_99_P.pak .github/pak_versions/ 2>/dev/null || true
 
           if git diff --cached --quiet; then
-            echo "✅ Không có thay đổi thực sự, bỏ qua commit."
+            echo "✅ Không có thay đổi, bỏ qua commit."
           else
-            COMMIT_MSG="🤖 Auto-sync PAK files"
-            [ -n "${CN_TAG}" ] && COMMIT_MSG="$COMMIT_MSG | CN: ${CN_TAG}"
-            [ -n "${EN_TAG}" ] && COMMIT_MSG="$COMMIT_MSG | EN: ${EN_TAG}"
-
-            git commit -m "$COMMIT_MSG"
+            MSG="🤖 Auto-sync PAK"
+            [ -n "${CN_TAG}" ] && MSG="$MSG | CN: ${CN_TAG} (${{ steps.cn.outputs.updated }})"
+            [ -n "${EN_TAG}" ] && MSG="$MSG | EN: ${EN_TAG} (${{ steps.en.outputs.updated }})"
+            git commit -m "$MSG"
             git push
-            echo "✅ Pushed: $COMMIT_MSG"
+            echo "✅ Pushed: $MSG"
           fi
