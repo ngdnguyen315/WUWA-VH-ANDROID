@@ -3,6 +3,7 @@ name: Sync PAK Files
 on:
   schedule:
     # Chạy mỗi 30 phút (lệch giờ để tránh quá tải server Github)
+    # Cập nhật lại lịch cron
     - cron: '12,42 * * * *'
   workflow_dispatch:
     # Cho phép chạy thủ công
