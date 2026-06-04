@@ -63,24 +63,20 @@ jobs:
       # ─────────────────────────────────────────────
       # 2. WuWaVHEN_99_P.pak (Lai-Hoang/wuwa-viet-hoa)
       # ─────────────────────────────────────────────
-      - name: Check EN pak update time
+      - name: Check EN repo update time
         id: en
         run: |
-          RELEASE=$(curl -sL \
+          COMMITS=$(curl -sL \
             -H "Accept: application/vnd.github+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
-            https://api.github.com/repos/Lai-Hoang/wuwa-viet-hoa/releases/latest)
+            "https://api.github.com/repos/Lai-Hoang/wuwa-viet-hoa/commits?sha=main&path=TiengViet_99_P&per_page=1")
 
-          TAG=$(echo "$RELEASE" | jq -r '.tag_name')
-          ZIP_URL=$(echo "$RELEASE" | jq -r '.assets[] | select(.name | test("tieng.?viet.?ww.?EN_to_Vi"; "i")) | .browser_download_url' | head -n1)
-          ZIP_NAME=$(echo "$RELEASE" | jq -r '.assets[] | select(.name | test("tieng.?viet.?ww.?EN_to_Vi"; "i")) | .name' | head -n1)
-          UPDATED=$(echo "$RELEASE" | jq -r '.assets[] | select(.name | test("tieng.?viet.?ww.?EN_to_Vi"; "i")) | .updated_at' | head -n1)
+          COMMIT_SHA=$(echo "$COMMITS" | jq -r '.[0].sha' | cut -c1-7)
+          UPDATED=$(echo "$COMMITS" | jq -r '.[0].commit.committer.date')
 
-          echo "tag=$TAG"         >> $GITHUB_OUTPUT
-          echo "zip_url=$ZIP_URL" >> $GITHUB_OUTPUT
-          echo "zip_name=$ZIP_NAME" >> $GITHUB_OUTPUT
+          echo "tag=$COMMIT_SHA"         >> $GITHUB_OUTPUT
           echo "updated=$UPDATED" >> $GITHUB_OUTPUT
-          echo "EN: tag=$TAG | file=$ZIP_NAME | updated_at=$UPDATED"
+          echo "EN: commit=$COMMIT_SHA | updated_at=$UPDATED"
 
           # Đọc thời gian đã lưu
           CACHE=".github/pak_versions/en_updated_at.txt"
@@ -88,36 +84,26 @@ jobs:
           echo "old_time=$OLD_TIME" >> $GITHUB_OUTPUT
           echo "EN cached: $OLD_TIME"
 
-      - name: Download and extract WuWaVHEN_99_P.pak
+      - name: Build WuWaVHEN_99_P.pak
         if: steps.en.outputs.updated != steps.en.outputs.old_time || steps.en.outputs.old_time == ''
         run: |
-          ZIP_URL="${{ steps.en.outputs.zip_url }}"
-          if [ -z "$ZIP_URL" ] || [ "$ZIP_URL" = "null" ]; then
-            echo "❌ Không tìm thấy file zip EN_to_Vi trong release!"
-            curl -sL \
-              -H "Accept: application/vnd.github+json" \
-              -H "X-GitHub-Api-Version: 2022-11-28" \
-              https://api.github.com/repos/Lai-Hoang/wuwa-viet-hoa/releases/latest \
-              | jq -r '.assets[].name'
-            exit 1
-          fi
-
-          echo "🔄 EN pak thay đổi lúc ${{ steps.en.outputs.updated }} (cũ: ${{ steps.en.outputs.old_time }})"
-          curl -L "$ZIP_URL" -o /tmp/vn_pack.zip
-          echo "✅ Tải xong: $(du -sh /tmp/vn_pack.zip | cut -f1)"
-
-          mkdir -p /tmp/vn_extract
-          unzip -o /tmp/vn_pack.zip -d /tmp/vn_extract
-
-          PAK=$(find /tmp/vn_extract -name "TiengViet_99_P.pak" | head -n1)
-          if [ -z "$PAK" ]; then
-            echo "❌ Không tìm thấy TiengViet_99_P.pak trong zip!"
-            find /tmp/vn_extract -type f
-            exit 1
-          fi
-
-          cp "$PAK" "WuWaVHEN_99_P.pak"
-          echo "✅ Sao chép xong: $(du -sh WuWaVHEN_99_P.pak | cut -f1)"
+          echo "🔄 EN repo thay đổi lúc ${{ steps.en.outputs.updated }} (cũ: ${{ steps.en.outputs.old_time }})"
+          
+          echo "🔄 Clone Lai-Hoang/wuwa-viet-hoa..."
+          git clone --depth 1 https://github.com/Lai-Hoang/wuwa-viet-hoa.git /tmp/wuwa-en-vi
+          
+          echo "🗑️ Filtering directories, keeping only ConfigDB and UidShow..."
+          mkdir -p /tmp/pack_stage/Client/Content/Aki/JavaScript/Game/Module
+          cp -r /tmp/wuwa-en-vi/TiengViet_99_P/Client/Content/Aki/ConfigDB /tmp/pack_stage/Client/Content/Aki/
+          cp -r /tmp/wuwa-en-vi/TiengViet_99_P/Client/Content/Aki/JavaScript/Game/Module/UidShow /tmp/pack_stage/Client/Content/Aki/JavaScript/Game/Module/
+          
+          echo "📥 Installing wine to run the Windows repak tool from repo..."
+          sudo apt-get update && sudo apt-get install -y wine
+          
+          echo "📦 Packing TiengViet_99_P using author's repak.exe (uncompressed)..."
+          wine "/tmp/wuwa-en-vi/helpPakFile/Pak File unpacker + packer mod/repak/repak.exe" pack -v --version V12 /tmp/pack_stage -- WuWaVHEN_99_P.pak
+          
+          echo "✅ Đã tạo xong: $(du -sh WuWaVHEN_99_P.pak | cut -f1)"
 
           mkdir -p .github/pak_versions
           echo "${{ steps.en.outputs.updated }}" > .github/pak_versions/en_updated_at.txt
