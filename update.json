@@ -1,6 +1,6 @@
 ﻿{
-    "version":  "1.4.9",
-    "apk_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.4.9/WUWA_VH_1.4.9.apk",
-    "page_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.4.9",
-    "notes":  "Cập nhật 1.4.9\n\n-Thêm tuỳ chọn quyền root cho máy có root\n-Khi cấp root cho app(hay cấp root cho shizuku) khi thoát game vào lại không bị mất việt hoá\n-Nếu dùng root, khi gỡ VH có thể bị lỗi hãy ấn gỡ lại vài lần để gỡ sạch"
+    "version": "1.5.0",
+    "apk_url": "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.5.0/WUWA_VH_1.5.0.apk",
+    "page_url": "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.5.0",
+    "notes": "🌃 NIGHT CITY TRANSMISSION\n\"I'm built different\"\n⚡ Và bản cập nhật này cũng vậy.\n\n-Fix lỗi thoát game vào lại mất Việt hoá (ko cần root)\n-Thêm tuỳ chọn bản dịch (EN-VI của Lai-Hoang)\n-Cập nhật chút giao diện (lag thì tắt Liquid Glass trong tab thông tin)\n-Cấp quyền thông báo để nhận thông tin mới\n-Nếu gặp lỗi vào tab thông tin gửi log 👌\nHẹn gặp các Rover tại Night City."
 }
