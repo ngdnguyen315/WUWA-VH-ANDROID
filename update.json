@@ -1,6 +1,6 @@
 ﻿{
-    "version": "1.5.1",
-    "apk_url": "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.5.0/WUWA_VH_1.5.0.apk",
-    "page_url": "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.5.0",
-    "notes": "🌃 NIGHT CITY TRANSMISSION\n\"I'm built different\"\n⚡ Và bản cập nhật này cũng vậy.\n\n-Fix lỗi thoát game vào lại mất Việt hoá (ko cần root)\n-Thêm tuỳ chọn bản dịch (EN-VI của Lai-Hoang)\n-Cập nhật chút giao diện (lag thì tắt Liquid Glass trong tab thông tin)\n-Cấp quyền thông báo để nhận thông tin mới\n-Nếu gặp lỗi vào tab thông tin gửi log 👌\nHẹn gặp các Rover tại Night City."
+    "version": "1.5.2",
+    "apk_url": "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.5.2/WUWA_VH_1.5.2.apk",
+    "page_url": "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.5.2",
+    "notes": "🌃 NIGHT CITY TRANSMISSION\n\"I'm built different.\"\n⚡ Và bản cập nhật này cũng vậy.\n\n-Fix lỗi thoát game vào lại mất Việt hoá (ko cần root)\n-Thêm tuỳ chọn bản dịch (EN-VI của Lai-Hoang)\n-Cập nhật chút giao diện (lag thì tắt Liquid Glass trong tab thông tin trong tab thông tin)\n-Cấp quyền thông báo để nhận thông tin mới\n-Nếu gặp lỗi vào tab thông tin gửi log 👌\nHẹn gặp các Rover tại Night City."
 }
