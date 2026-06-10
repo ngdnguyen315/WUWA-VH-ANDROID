@@ -1,6 +1,6 @@
 ﻿{
-    "version":  "1.5.4",
-    "apk_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.5.4/WUWA_VH_1.5.4.apk",
-    "page_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.5.4",
-    "notes":  "Cập nhật 1.5.4\r\n\r\n-Fix lỗi dùng font riêng WW \r\n-Tối ưu lại cài VH NTE\r\n-Thêm ẩn UID NTE\r\n-Thêm đổi font và font riêng cho NTE\r\n-Ấn giữ vào trong list để xem trước font\r\n-Update xong mn nên xoá dữ liệu app đi\r\n-Mn có thể vào tab thông tin gửi feedback"
+    "version":  "1.5.5",
+    "apk_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.5.5/WUWA_VH_1.5.5.apk",
+    "page_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.5.5",
+    "notes":  "Cập nhật 1.5.5\r\n\r\n-Fix lỗi dùng font riêng WW \r\n-Tối ưu lại cài VH NTE\r\n-Thêm ẩn UID NTE\r\n-Thêm đổi font và font riêng cho NTE\r\n-Ấn giữ vào trong list để xem trước font\r\n-Update xong mn nên xoá dữ liệu app đi\r\n-Mn có thể vào tab thông tin gửi feedback"
 }
