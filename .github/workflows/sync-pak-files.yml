@@ -100,7 +100,8 @@ jobs:
           echo "📥 Downloading native Linux repak..."
           wget -qO repak.tar.xz "https://github.com/trumank/repak/releases/latest/download/repak_cli-x86_64-unknown-linux-gnu.tar.xz"
           tar -xf repak.tar.xz
-          chmod +x repak
+          mv repak_cli-x86_64-unknown-linux-gnu/repak ./repak
+          chmod +x ./repak
           
           echo "📦 Packing TiengViet_99_P using native repak (uncompressed)..."
           ./repak pack -v --version V12 /tmp/pack_stage -- WuWaVHEN_99_P.pak
@@ -140,7 +141,8 @@ jobs:
             echo "📥 Downloading native Linux repak..."
             wget -qO repak.tar.xz "https://github.com/trumank/repak/releases/latest/download/repak_cli-x86_64-unknown-linux-gnu.tar.xz"
             tar -xf repak.tar.xz
-            chmod +x repak
+            mv repak_cli-x86_64-unknown-linux-gnu/repak ./repak
+            chmod +x ./repak
           fi
           
           echo "📥 Downloading NTE_VietHoa_Android.zip..."
