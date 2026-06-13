@@ -97,12 +97,13 @@ jobs:
           cp -r /tmp/wuwa-en-vi/TiengViet_99_P/Client/Content/Aki/ConfigDB /tmp/pack_stage/Client/Content/Aki/
           cp -r /tmp/wuwa-en-vi/TiengViet_99_P/Client/Content/Aki/JavaScript/Game/Module/UidShow /tmp/pack_stage/Client/Content/Aki/JavaScript/Game/Module/
           
-          echo "📥 Installing wine to run the Windows repak tool from repo..."
-          sudo dpkg --add-architecture i386
-          sudo apt-get update && sudo apt-get install -y wine wine32
+          echo "📥 Downloading native Linux repak..."
+          wget -qO repak.tar.xz "https://github.com/trumank/repak/releases/latest/download/repak_cli-x86_64-unknown-linux-gnu.tar.xz"
+          tar -xf repak.tar.xz
+          chmod +x repak
           
-          echo "📦 Packing TiengViet_99_P using author's repak.exe (uncompressed)..."
-          wine "/tmp/wuwa-en-vi/helpPakFile/Pak File unpacker + packer mod/repak/repak.exe" pack -v --version V12 /tmp/pack_stage -- WuWaVHEN_99_P.pak
+          echo "📦 Packing TiengViet_99_P using native repak (uncompressed)..."
+          ./repak pack -v --version V12 /tmp/pack_stage -- WuWaVHEN_99_P.pak
           
           echo "✅ Đã tạo xong: $(du -sh WuWaVHEN_99_P.pak | cut -f1)"
 
@@ -135,10 +136,11 @@ jobs:
         if: steps.nte.outputs.updated != steps.nte.outputs.old_time || steps.nte.outputs.old_time == ''
         run: |
           echo "🔄 Tạo bản từ CallMeDangDev NTE..."
-          if [ ! -d "/tmp/wuwa-en-vi" ]; then
-            git clone --depth 1 https://github.com/Lai-Hoang/wuwa-viet-hoa.git /tmp/wuwa-en-vi
-            sudo dpkg --add-architecture i386
-            sudo apt-get update && sudo apt-get install -y wine wine32 unzip
+          if [ ! -f "./repak" ]; then
+            echo "📥 Downloading native Linux repak..."
+            wget -qO repak.tar.xz "https://github.com/trumank/repak/releases/latest/download/repak_cli-x86_64-unknown-linux-gnu.tar.xz"
+            tar -xf repak.tar.xz
+            chmod +x repak
           fi
           
           echo "📥 Downloading NTE_VietHoa_Android.zip..."
@@ -154,7 +156,7 @@ jobs:
           fi
           
           echo "📦 Unpacking $PAK_FILE..."
-          wine "/tmp/wuwa-en-vi/helpPakFile/Pak File unpacker + packer mod/repak/repak.exe" unpack "$PAK_FILE"
+          ./repak unpack "$PAK_FILE"
           
           UNPACKED_DIR=$(basename "$PAK_FILE" .pak)
           
@@ -162,7 +164,7 @@ jobs:
           rm -rf "$UNPACKED_DIR/HT/Content/Environment" 2>/dev/null || true
           
           echo "📦 Repacking to NTEVH_99_P.pak..."
-          wine "/tmp/wuwa-en-vi/helpPakFile/Pak File unpacker + packer mod/repak/repak.exe" pack -v --version V11 "$UNPACKED_DIR" -- NTEVH_99_P.pak
+          ./repak pack -v --version V11 "$UNPACKED_DIR" -- NTEVH_99_P.pak
           
           echo "✅ Đã tạo xong bản NoFont: $(du -sh NTEVH_99_P.pak | cut -f1)"
 
