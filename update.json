@@ -1,6 +1,6 @@
 ﻿{
-    "version":  "1.5.6",
-    "apk_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.5.6/WUWA_VH_1.5.6.apk",
-    "page_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.5.6",
-    "notes":  "Cập nhật 1.5.6\r\n\r\n-Cập nhật bản dịch CN-VI WW cốt chuyện Lucila\r\n-Chuyển sang dùng bản dịch NTE của CallMeDangDev\r\n-Update xong app sẽ tự xoá data và thoát, mở lại là dùng bình thường"
+    "version": "1.5.6",
+    "apk_url": "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.5.6/WUWA_VH_1.5.6.apk",
+    "page_url": "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.5.6",
+    "notes": "Cập nhật 1.5.6\r\n\r\n-Cập nhật bản dịch CN-VI WW cốt chuyện Lucilla\r\n-Chuyển sang dùng bản dịch NTE của CallMeDangDev\r\n-Update xong app sẽ tự xoá data và thoát, mở lại là dùng bình thường"
 }
