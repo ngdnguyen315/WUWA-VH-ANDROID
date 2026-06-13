@@ -98,7 +98,8 @@ jobs:
           cp -r /tmp/wuwa-en-vi/TiengViet_99_P/Client/Content/Aki/JavaScript/Game/Module/UidShow /tmp/pack_stage/Client/Content/Aki/JavaScript/Game/Module/
           
           echo "📥 Installing wine to run the Windows repak tool from repo..."
-          sudo apt-get update && sudo apt-get install -y wine
+          sudo dpkg --add-architecture i386
+          sudo apt-get update && sudo apt-get install -y wine wine32
           
           echo "📦 Packing TiengViet_99_P using author's repak.exe (uncompressed)..."
           wine "/tmp/wuwa-en-vi/helpPakFile/Pak File unpacker + packer mod/repak/repak.exe" pack -v --version V12 /tmp/pack_stage -- WuWaVHEN_99_P.pak
@@ -136,7 +137,8 @@ jobs:
           echo "🔄 Tạo bản từ CallMeDangDev NTE..."
           if [ ! -d "/tmp/wuwa-en-vi" ]; then
             git clone --depth 1 https://github.com/Lai-Hoang/wuwa-viet-hoa.git /tmp/wuwa-en-vi
-            sudo apt-get update && sudo apt-get install -y wine unzip
+            sudo dpkg --add-architecture i386
+            sudo apt-get update && sudo apt-get install -y wine wine32 unzip
           fi
           
           echo "📥 Downloading NTE_VietHoa_Android.zip..."
