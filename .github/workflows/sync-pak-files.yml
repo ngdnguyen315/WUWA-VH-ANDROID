@@ -97,92 +97,27 @@ jobs:
           cp -r /tmp/wuwa-en-vi/TiengViet_99_P/Client/Content/Aki/ConfigDB /tmp/pack_stage/Client/Content/Aki/
           cp -r /tmp/wuwa-en-vi/TiengViet_99_P/Client/Content/Aki/JavaScript/Game/Module/UidShow /tmp/pack_stage/Client/Content/Aki/JavaScript/Game/Module/
           
-          echo "📥 Downloading native Linux repak..."
-          wget -qO repak.tar.xz "https://github.com/trumank/repak/releases/latest/download/repak_cli-x86_64-unknown-linux-gnu.tar.xz"
-          tar -xf repak.tar.xz
-          mv repak_cli-x86_64-unknown-linux-gnu/repak ./repak
-          chmod +x ./repak
+          echo "📥 Installing wine to run the Windows repak tool from repo..."
+          sudo apt-get update && sudo apt-get install -y wine
           
-          echo "📦 Packing TiengViet_99_P using native repak (uncompressed)..."
-          ./repak pack -v --version V12 /tmp/pack_stage -- WuWaVHEN_99_P.pak
+          echo "📦 Packing TiengViet_99_P using author's repak.exe (uncompressed)..."
+          wine "/tmp/wuwa-en-vi/helpPakFile/Pak File unpacker + packer mod/repak/repak.exe" pack -v --version V12 /tmp/pack_stage -- WuWaVHEN_99_P.pak
           
           echo "✅ Đã tạo xong: $(du -sh WuWaVHEN_99_P.pak | cut -f1)"
 
           mkdir -p .github/pak_versions
           echo "${{ steps.en.outputs.updated }}" > .github/pak_versions/en_updated_at.txt
-      # ─────────────────────────────────────────────
-      # 3. NTEVH_99_P.pak (CallMeDangDev/NTE-Viet-Hoa)
-      # ─────────────────────────────────────────────
-      - name: Check NTE update time
-        id: nte
-        run: |
-          RELEASE=$(curl -sL \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            https://api.github.com/repos/CallMeDangDev/NTE-Viet-Hoa/releases/latest)
-
-          TAG=$(echo "$RELEASE" | jq -r '.tag_name')
-          UPDATED=$(echo "$RELEASE" | jq -r '.assets[] | select(.name == "NTE_VietHoa_Android.zip") | .updated_at')
-
-          echo "tag=$TAG"       >> $GITHUB_OUTPUT
-          echo "updated=$UPDATED" >> $GITHUB_OUTPUT
-          echo "NTE: tag=$TAG | updated_at=$UPDATED"
-
-          CACHE=".github/pak_versions/nte_updated_at.txt"
-          OLD_TIME=$([ -f "$CACHE" ] && cat "$CACHE" || echo "")
-          echo "old_time=$OLD_TIME" >> $GITHUB_OUTPUT
-          echo "NTE cached: $OLD_TIME"
-
-      - name: Build NTEVH_99_P.pak
-        if: steps.nte.outputs.updated != steps.nte.outputs.old_time || steps.nte.outputs.old_time == ''
-        run: |
-          echo "🔄 Tạo bản từ CallMeDangDev NTE..."
-          if [ ! -f "./repak" ]; then
-            echo "📥 Downloading native Linux repak..."
-            wget -qO repak.tar.xz "https://github.com/trumank/repak/releases/latest/download/repak_cli-x86_64-unknown-linux-gnu.tar.xz"
-            tar -xf repak.tar.xz
-            mv repak_cli-x86_64-unknown-linux-gnu/repak ./repak
-            chmod +x ./repak
-          fi
-          
-          echo "📥 Downloading NTE_VietHoa_Android.zip..."
-          curl -L "https://github.com/CallMeDangDev/NTE-Viet-Hoa/releases/latest/download/NTE_VietHoa_Android.zip" -o "NTE_Android.zip"
-          
-          echo "📦 Extracting Zip..."
-          unzip -q NTE_Android.zip -d NTE_Extracted
-          
-          PAK_FILE=$(find NTE_Extracted -name "*.pak" | head -n 1)
-          if [ -z "$PAK_FILE" ]; then
-            echo "❌ Không tìm thấy file .pak trong file Zip!"
-            exit 1
-          fi
-          
-          echo "📦 Unpacking $PAK_FILE..."
-          ./repak unpack "$PAK_FILE"
-          
-          UNPACKED_DIR=$(basename "$PAK_FILE" .pak)
-          
-          echo "🗑️ Xóa toàn bộ thư mục Environment (bao gồm Fonts)..."
-          rm -rf "$UNPACKED_DIR/HT/Content/Environment" 2>/dev/null || true
-          
-          echo "📦 Repacking to NTEVH_99_P.pak..."
-          ./repak pack -v --version V11 "$UNPACKED_DIR" -- NTEVH_99_P.pak
-          
-          echo "✅ Đã tạo xong bản NoFont: $(du -sh NTEVH_99_P.pak | cut -f1)"
-
-          mkdir -p .github/pak_versions
-          echo "${{ steps.nte.outputs.updated }}" > .github/pak_versions/nte_updated_at.txt
-          echo "NTE_TAG=${{ steps.nte.outputs.tag }}" >> $GITHUB_ENV
+          echo "EN_TAG=${{ steps.en.outputs.tag }}" >> $GITHUB_ENV
 
       # ─────────────────────────────────────────────
-      # 4. Commit & Push
+      # 3. Commit & Push
       # ─────────────────────────────────────────────
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add WuWaVHCN_99_P.pak WuWaVHEN_99_P.pak NTEVH_99_P.pak .github/pak_versions/ 2>/dev/null || true
+          git add WuWaVHCN_99_P.pak WuWaVHEN_99_P.pak .github/pak_versions/ 2>/dev/null || true
 
           if git diff --cached --quiet; then
             echo "✅ Không có thay đổi, bỏ qua commit."
@@ -190,7 +125,6 @@ jobs:
             MSG="🤖 Auto-sync PAK"
             [ -n "${CN_TAG}" ] && MSG="$MSG | CN: ${CN_TAG} (${{ steps.cn.outputs.updated }})"
             [ -n "${EN_TAG}" ] && MSG="$MSG | EN: ${EN_TAG} (${{ steps.en.outputs.updated }})"
-            [ -n "${NTE_TAG}" ] && MSG="$MSG | NTE: ${NTE_TAG} (${{ steps.nte.outputs.updated }})"
             git commit -m "$MSG"
             git push
             echo "✅ Pushed: $MSG"
