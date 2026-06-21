@@ -1,6 +1,6 @@
 ﻿{
-    "version": "1.5.6",
-    "apk_url": "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.5.6/WUWA_VH_1.5.6.apk",
-    "page_url": "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.5.6",
-    "notes": "Cập nhật 1.5.6\r\n\r\n-Cập nhật bản dịch CN-VI WW cốt chuyện Lucilla\r\n-Chuyển sang dùng bản dịch NTE của CallMeDangDev\r\n-Update xong app sẽ tự xoá data và thoát, mở lại là dùng bình thường"
+    "version":  "1.6.0",
+    "apk_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.6.0/WUWA_VH_1.6.0.apk",
+    "page_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.6.0",
+    "notes":  "📢 Cập nhật 1.6.0\r\n\r\n🐧Mod skin WW \r\n✨Gồm 6 skin ( bán trong shop : Jinhsi, Sanhua, Zani, Carlotta, Changli, Mornye )\r\n➕Và 1 skin Hiyuki lỏ demo\r\n⚠️ Chỉ mod đc lại Texture còn Mesh thì ad chịu (ko bt ai cook lại đc ko nhỉ 🫠)\r\n📌Cách hoạt động thì cũng như mod Việt Hoá, ai thích thì thử xem"
 }
