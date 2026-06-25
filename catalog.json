@@ -193,9 +193,14 @@
       "device_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Balanced%20Visual/DeviceProfiles.ini"
     },
     {
-      "name": "Snap/Perfoma",
-      "engine_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Perfoma/Engine.ini",
-      "device_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Perfoma/DeviceProfiles.ini"
+      "name": "Snap/Balanced Perfoma",
+      "engine_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Balanced%20Perfoma/Engine.ini",
+      "device_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Balanced%20Perfoma/DeviceProfiles.ini"
+    },
+    {
+      "name": "Snap/Ultra Perfoma",
+      "engine_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Ultra%20Perfoma/Engine.ini",
+      "device_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Ultra%20Perfoma/DeviceProfiles.ini"
     },
     {
       "name": "Snap/High-Ultra",
