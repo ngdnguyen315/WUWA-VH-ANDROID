@@ -158,6 +158,21 @@ jobs:
           
           UNPACKED_DIR="${PAK_FILE%.pak}"
           
+          echo "🔠 Trích xuất Font sang thư mục fonts/ để đồng bộ..."
+          python3 -c "
+          import struct, glob, os
+          font_dir = '$UNPACKED_DIR/HT/Content/Environment/Building/TrainStation/Fonts'
+          out_dir = 'fonts'
+          os.makedirs(out_dir, exist_ok=True)
+          for f in glob.glob(os.path.join(font_dir, 'MiSans-Heavy.ufont')):
+              name = os.path.basename(f).replace('.ufont', '_extracted.ttf')
+              with open(f, 'rb') as in_f: data = in_f.read()
+              length = struct.unpack('<I', data[:4])[0]
+              with open(os.path.join(out_dir, name), 'wb') as out_f:
+                  out_f.write(data[4:4+length])
+              print(f'Extracted {name}')
+          "
+          
           echo "🗑️ Xóa toàn bộ thư mục Environment (bao gồm Fonts)..."
           rm -rf "$UNPACKED_DIR/HT/Content/Environment" 2>/dev/null || true
           
@@ -179,6 +194,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git add WuWaVHCN_99_P.pak WuWaVHEN_99_P.pak NTEVH_99_P.pak .github/pak_versions/ 2>/dev/null || true
+          git add fonts/MiSans-Heavy_extracted.ttf 2>/dev/null || true
 
           if git diff --cached --quiet; then
             echo "✅ Không có thay đổi, bỏ qua commit."
