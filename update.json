@@ -1,6 +1,6 @@
 ﻿{
-    "version":  "1.6.1",
-    "apk_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.6.1/WUWA_VH_1.6.1.apk",
-    "page_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.6.1",
-    "notes":  "📢 Cập nhật 1.6.1\r\n\r\n-Fix ko check đc bản dịch mới\r\n-Fix mất chữ NTE ko cần xoá data app"
+    "version":  "1.6.2",
+    "apk_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.6.2/WUWA_VH_1.6.2.apk",
+    "page_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.6.2",
+    "notes":  "📢 Cập nhật 1.6.2\r\n\r\n-Update :)\r\n-Fix lỗi :)"
 }
