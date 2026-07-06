@@ -1,6 +1,6 @@
 ﻿{
-    "version":  "1.6.2",
-    "apk_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.6.2/WUWA_VH_1.6.2.apk",
-    "page_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.6.2",
-    "notes":  "📢 Cập nhật 1.6.2\r\n\r\n-Update :)\r\n-Fix lỗi :)"
+    "version":  "1.6.3",
+    "apk_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.6.3/WUWA_VH_1.6.3.apk",
+    "page_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.6.3",
+    "notes":  "📢 Cập nhật 1.6.3\r\n\r\n-Fix lỗi bị github giới hạn (http 429)"
 }
