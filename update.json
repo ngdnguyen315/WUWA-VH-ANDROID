@@ -1,6 +1,6 @@
 ﻿{
-    "version":  "1.6.4",
-    "apk_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.6.4/WUWA_VH_1.6.4.apk",
-    "page_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.6.4",
-    "notes":  "📢 Cập nhật 1.6.4\r\n\r\n- Fix lỗi cài mod Skin WW do bản cập nhật tải trước (pre-load)"
+    "version":  "1.6.5",
+    "apk_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.6.5/WUWA_VH_1.6.5.apk",
+    "page_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.6.5",
+    "notes":  "📢 Cập nhật 1.6.5\r\n\r\n- Fix lỗi văng game khi cài VH WW \r\n- Bản dịch chưa update nên ai dùng thì dùng (sẽ bị lỗi chữ các phần game update thêm thôi)"
 }
