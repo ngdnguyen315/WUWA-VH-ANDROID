@@ -108,18 +108,17 @@ jobs:
           echo "EN_TAG=${{ steps.en.outputs.tag }}" >> $GITHUB_ENV
 
       # ─────────────────────────────────────────────
-      # 3. NTEVH_99_P.pak (CallMeDangDev/NTE-Viet-Hoa)
+      # ─────────────────────────────────────────────
+      # 3. NTEVH_99_P.pak (BachMacThanh/NTE-Viet-Hoa on HuggingFace)
       # ─────────────────────────────────────────────
       - name: Check NTE update time
         id: nte
         run: |
-          RELEASE=$(curl -sL \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            https://api.github.com/repos/CallMeDangDev/NTE-Viet-Hoa/releases/latest)
-
-          TAG=$(echo "$RELEASE" | jq -r '.tag_name')
-          UPDATED=$(echo "$RELEASE" | jq -r '.assets[] | select(.name == "NTE_VietHoa_Android.zip") | .updated_at')
+          VERSION_JSON=$(curl -sL "https://huggingface.co/datasets/BachMacThanh/NTE-Viet-Hoa/raw/main/version.json")
+          TAG=$(echo "$VERSION_JSON" | jq -r '.version')
+          
+          DATASET_API=$(curl -sL "https://huggingface.co/api/datasets/BachMacThanh/NTE-Viet-Hoa")
+          UPDATED=$(echo "$DATASET_API" | jq -r '.lastModified')
 
           echo "tag=$TAG"       >> $GITHUB_OUTPUT
           echo "updated=$UPDATED" >> $GITHUB_OUTPUT
@@ -133,14 +132,14 @@ jobs:
       - name: Build NTEVH_99_P.pak
         if: steps.nte.outputs.updated != steps.nte.outputs.old_time || steps.nte.outputs.old_time == ''
         run: |
-          echo "🔄 Tạo bản từ CallMeDangDev NTE..."
+          echo "🔄 Tạo bản từ BachMacThanh NTE..."
           if [ ! -d "/tmp/wuwa-en-vi" ]; then
             git clone --depth 1 https://github.com/Lai-Hoang/wuwa-viet-hoa.git /tmp/wuwa-en-vi
             sudo apt-get update && sudo apt-get install -y wine unzip
           fi
           
           echo "📥 Downloading NTE_VietHoa_Android.zip..."
-          curl -L "https://github.com/CallMeDangDev/NTE-Viet-Hoa/releases/latest/download/NTE_VietHoa_Android.zip" -o "NTE_Android.zip"
+          curl -L "https://huggingface.co/datasets/BachMacThanh/NTE-Viet-Hoa/resolve/main/${{ steps.nte.outputs.tag }}/NTE_VietHoa_Android.zip" -o "NTE_Android.zip"
           
           echo "📦 Extracting Zip..."
           unzip -q NTE_Android.zip -d NTE_Extracted
