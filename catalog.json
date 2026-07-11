@@ -225,8 +225,18 @@
   ],
   "skins": [
     {
+      "name": "SkinMod_Lynae_99_P.pak",
+      "label": "Lynae",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/skins/SkinMod_Lynae_99_P.pak"
+    },
+    {
+      "name": "SkinMod_Chisa_99_P.pak",
+      "label": "Chisa",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/skins/SkinMod_Chisa_99_P.pak"
+    },
+    {
       "name": "SkinMod_Hiyuki_99_P.pak",
-      "label": "Hiyuki",
+      "label": "Hiyuki(cài đc nhưng đang lỗi :) )",
       "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/skins/SkinMod_Hiyuki_99_P.pak"
     },
     {
