@@ -41,7 +41,7 @@ jobs:
 
           # Đọc thời gian đã lưu
           CACHE=".github/pak_versions/cn_updated_at.txt"
-          OLD_TIME=$([ -f "$CACHE" ] && cat "$CACHE" || echo "")
+          OLD_TIME=$([ -f "$CACHE" ] && head -n 1 "$CACHE" || echo "")
           echo "old_time=$OLD_TIME" >> $GITHUB_OUTPUT
           echo "CN cached: $OLD_TIME"
 
@@ -56,7 +56,7 @@ jobs:
 
           mkdir -p .github/pak_versions
           echo "${{ steps.cn.outputs.updated }}" > .github/pak_versions/cn_updated_at.txt
-          echo "${{ steps.cn.outputs.tag }}" > .github/pak_versions/cn_version.txt
+          echo "${{ steps.cn.outputs.tag }}" >> .github/pak_versions/cn_updated_at.txt
           echo "CN_TAG=${{ steps.cn.outputs.tag }}" >> $GITHUB_ENV
 
       # ─────────────────────────────────────────────
@@ -79,7 +79,7 @@ jobs:
 
           # Đọc thời gian đã lưu
           CACHE=".github/pak_versions/en_updated_at.txt"
-          OLD_TIME=$([ -f "$CACHE" ] && cat "$CACHE" || echo "")
+          OLD_TIME=$([ -f "$CACHE" ] && head -n 1 "$CACHE" || echo "")
           echo "old_time=$OLD_TIME" >> $GITHUB_OUTPUT
           echo "EN cached: $OLD_TIME"
 
@@ -106,7 +106,7 @@ jobs:
 
           mkdir -p .github/pak_versions
           echo "${{ steps.en.outputs.updated }}" > .github/pak_versions/en_updated_at.txt
-          echo "${{ steps.en.outputs.tag }}" > .github/pak_versions/en_version.txt
+          echo "${{ steps.en.outputs.tag }}" >> .github/pak_versions/en_updated_at.txt
           echo 'EN_TAG<<EOF' >> $GITHUB_ENV
           echo "${{ steps.en.outputs.tag }}" >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
@@ -129,7 +129,7 @@ jobs:
           echo "NTE: tag=$TAG | updated_at=$UPDATED"
 
           CACHE=".github/pak_versions/nte_updated_at.txt"
-          OLD_TIME=$([ -f "$CACHE" ] && cat "$CACHE" || echo "")
+          OLD_TIME=$([ -f "$CACHE" ] && head -n 1 "$CACHE" || echo "")
           echo "old_time=$OLD_TIME" >> $GITHUB_OUTPUT
           echo "NTE cached: $OLD_TIME"
 
@@ -184,7 +184,7 @@ jobs:
 
           mkdir -p .github/pak_versions
           echo "${{ steps.nte.outputs.updated }}" > .github/pak_versions/nte_updated_at.txt
-          echo "${{ steps.nte.outputs.tag }}" > .github/pak_versions/nte_version.txt
+          echo "${{ steps.nte.outputs.tag }}" >> .github/pak_versions/nte_updated_at.txt
           echo "NTE_TAG=${{ steps.nte.outputs.tag }}" >> $GITHUB_ENV
 
       # ─────────────────────────────────────────────
