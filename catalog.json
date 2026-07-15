@@ -269,5 +269,25 @@
       "label": "Zani",
       "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/skins/SkinMod_Zani_99_P.pak"
     }
+  ],
+  "translations": [
+    {
+      "key": "cn",
+      "name": "🀄 Trung-Việt (CN-VI)",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/WuWaVHCN_99_P.pak",
+      "updated_at_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/.github/pak_versions/cn_updated_at.txt"
+    },
+    {
+      "key": "en",
+      "name": "🔤 Anh-Việt (EN-VI)",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/WuWaVHEN_99_P.pak",
+      "updated_at_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/.github/pak_versions/en_updated_at.txt"
+    },
+    {
+      "key": "nte",
+      "name": "🌃 NTE Việt Hóa",
+      "url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/NTEVH_99_P.pak",
+      "updated_at_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/.github/pak_versions/nte_updated_at.txt"
+    }
   ]
 }
