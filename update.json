@@ -1,6 +1,6 @@
 ﻿{
-    "version":  "1.6.5",
-    "apk_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.6.5/WUWA_VH_1.6.5.apk",
-    "page_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.6.5",
-    "notes":  "📢 Cập nhật 1.6.5\r\n\r\n- Fix lỗi văng game khi cài VH WW \r\n- Bản dịch chưa update nên ai dùng thì dùng (sẽ bị lỗi chữ các phần game update thêm thôi)"
+    "version":  "1.6.6",
+    "apk_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.6.6/WUWA_VH_1.6.6.apk",
+    "page_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.6.6",
+    "notes":  "📢 Cập nhật 1.6.6\r\n\r\n- Cập nhật bản dịch EN-VI WW 3.5\r\n- Hiện thông tin ngày update bản dịch \r\n- Phản hồi ko phải đợi 12h mà nếu đc ad phản hồi sẽ gửi đc tiếp"
 }
