@@ -35,7 +35,7 @@ jobs:
           DATASET_API=$(curl -sL "https://huggingface.co/api/datasets/BachMacThanh/WuwaVH")
           UPDATED=$(echo "$DATASET_API" | jq -r '.lastModified')
 
-          echo "tag=v$TAG"       >> $GITHUB_OUTPUT
+          echo "tag=$TAG"       >> $GITHUB_OUTPUT
           echo "updated=$UPDATED" >> $GITHUB_OUTPUT
           echo "CN: tag=v$TAG | updated_at=$UPDATED"
 
@@ -50,7 +50,7 @@ jobs:
         run: |
           echo "🔄 CN pak thay đổi lúc ${{ steps.cn.outputs.updated }} (cũ: ${{ steps.cn.outputs.old_time }})"
           curl -L \
-            "https://huggingface.co/datasets/BachMacThanh/WuwaVH/resolve/main/version/${{ steps.cn.outputs.tag }}/WuWaVH_99_P.pak" \
+            "https://huggingface.co/datasets/BachMacThanh/WuwaVH/resolve/main/version/v${{ steps.cn.outputs.tag }}/WuWaVH_99_P.pak" \
             -o "WuWaVHCN_99_P.pak"
           echo "✅ Tải xong: $(du -sh WuWaVHCN_99_P.pak | cut -f1)"
 
@@ -120,6 +120,7 @@ jobs:
         run: |
           VERSION_JSON=$(curl -sL "https://huggingface.co/datasets/BachMacThanh/NTE-Viet-Hoa/raw/main/version.json")
           TAG=$(echo "$VERSION_JSON" | jq -r '.version')
+          TAG="${TAG#v}"
           
           DATASET_API=$(curl -sL "https://huggingface.co/api/datasets/BachMacThanh/NTE-Viet-Hoa")
           UPDATED=$(echo "$DATASET_API" | jq -r '.lastModified')
@@ -143,7 +144,7 @@ jobs:
           fi
           
           echo "📥 Downloading NTE_VietHoa_Android.zip..."
-          curl -L "https://huggingface.co/datasets/BachMacThanh/NTE-Viet-Hoa/resolve/main/${{ steps.nte.outputs.tag }}/NTE_VietHoa_Android.zip" -o "NTE_Android.zip"
+          curl -L "https://huggingface.co/datasets/BachMacThanh/NTE-Viet-Hoa/resolve/main/v${{ steps.nte.outputs.tag }}/NTE_VietHoa_Android.zip" -o "NTE_Android.zip"
           
           echo "📦 Extracting Zip..."
           unzip -q NTE_Android.zip -d NTE_Extracted
