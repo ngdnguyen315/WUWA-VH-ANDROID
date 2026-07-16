@@ -1,6 +1,6 @@
 ﻿{
-    "version":  "1.6.6",
-    "apk_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.6.6/WUWA_VH_1.6.6.apk",
-    "page_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.6.6",
-    "notes":  "📢 Cập nhật 1.6.6\r\n\r\n- Cập nhật bản dịch EN-VI WW 3.5\r\n- Hiện thông tin ngày update bản dịch \r\n- Phản hồi ko phải đợi 12h mà nếu đc ad phản hồi sẽ gửi đc tiếp"
+    "version":  "1.7.0",
+    "apk_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.7.0/WUWA_VH_1.7.0.apk",
+    "page_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.7.0",
+    "notes":  "📢 Cập nhật 1.7.0\r\n\r\n- update linh tinh\r\n- update config ww"
 }
