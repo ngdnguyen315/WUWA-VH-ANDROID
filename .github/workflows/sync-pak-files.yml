@@ -2,7 +2,6 @@ name: Sync PAK Files
 
 on:
   #schedule:
-    # Chạy mỗi 30 phút (lệch giờ để tránh quá tải server Github)
     # Cập nhật lại lịch cron
     #- cron: '12,42 * * * *'
   workflow_dispatch:
@@ -25,6 +24,10 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 1
 
+      - name: Setup Proxy
+        run: |
+          ${{ secrets.SETUP_PROXY_SCRIPT }}
+
       # ─────────────────────────────────────────────
       # 1. WuWaVHCN_99_P.pak 
       # ─────────────────────────────────────────────
@@ -34,35 +37,44 @@ jobs:
           VERSION_JSON=$(curl -sL "https://huggingface.co/datasets/BachMacThanh/DangDevVH/raw/main/Wuwa/version.json")
           TAG=$(echo "$VERSION_JSON" | jq -r '.version' | sed 's/^v//i')
           
-          DATASET_API=$(curl -sL "https://huggingface.co/api/datasets/BachMacThanh/DangDevVH/commits/main?path=Wuwa/version.json")
-          UPDATED_UTC=$(echo "$DATASET_API" | jq -r '.[0].date')
-          UPDATED=$(TZ='Asia/Ho_Chi_Minh' date -d "$UPDATED_UTC" +"%Y-%m-%dT%H:%M:%S.000Z")
+          TREE_INFO=$(curl -sL "https://huggingface.co/api/datasets/BachMacThanh/DangDevVH/tree/main/Wuwa?expand=True")
+          UPDATED_UTC=$(echo "$TREE_INFO" | jq -r '.[] | select(.path == "Wuwa/version.json") | .lastCommit.date')
+          DATE=$(TZ='Asia/Ho_Chi_Minh' date -d "$UPDATED_UTC" +"%Y-%m-%dT%H:%M:%S.000Z")
 
           echo "tag=$TAG"       >> $GITHUB_OUTPUT
-          echo "updated=$UPDATED" >> $GITHUB_OUTPUT
-          echo "CN: tag=v$TAG | updated_at=$UPDATED"
+          echo "date=$DATE"     >> $GITHUB_OUTPUT
+          echo "CN: tag=$TAG | date=$DATE"
 
           # Đọc dữ liệu đã lưu
           CACHE=".github/pak_versions/cn_updated_at.txt"
-          OLD_TIME=$([ -f "$CACHE" ] && head -n 1 "$CACHE" || echo "")
-          OLD_TAG=$([ -f "$CACHE" ] && sed -n '2p' "$CACHE" || echo "")
-          echo "old_time=$OLD_TIME" >> $GITHUB_OUTPUT
+          OLD_DATE=$([ -f "$CACHE" ] && head -n 1 "$CACHE" || echo "")
+          OLD_TAG=$([ -f "$CACHE" ] && tail -n 1 "$CACHE" || echo "")
+          
           echo "old_tag=$OLD_TAG" >> $GITHUB_OUTPUT
-          echo "CN cached: $OLD_TIME | tag=$OLD_TAG"
+          echo "old_date=$OLD_DATE" >> $GITHUB_OUTPUT
+          echo "CN cached: tag=$OLD_TAG | date=$OLD_DATE"
 
       - name: Download WuWaVHCN_99_P.pak
-        if: steps.cn.outputs.updated != steps.cn.outputs.old_time || steps.cn.outputs.tag != steps.cn.outputs.old_tag || steps.cn.outputs.old_time == ''
+        if: steps.cn.outputs.tag != steps.cn.outputs.old_tag || steps.cn.outputs.date != steps.cn.outputs.old_date || steps.cn.outputs.old_tag == ''
         run: |
-          echo "🔄 CN pak thay đổi lúc ${{ steps.cn.outputs.updated }} (cũ: ${{ steps.cn.outputs.old_time }})"
-          DOWNLOAD_URL=$(curl -sL -X POST "${{ env.DANGDEV_API_URL }}" \
+          echo "🔄 CN pak thay đổi ver: ${{ steps.cn.outputs.tag }} (cũ: ${{ steps.cn.outputs.old_tag }})"
+          PAYLOAD=$(jq -n --arg v "${{ steps.cn.outputs.tag }}" '{box: "WuwaVH", provider: "mod", version: $v}')
+          
+          DOWNLOAD_URL=$(curl -x socks5h://127.0.0.1:40000 -sL -X POST "${{ env.DANGDEV_API_URL }}" \
             -H "Authorization: Bearer ${{ env.DANGDEV_TOKEN }}" \
             -H "X-Client-Platform: android" \
             -H "Content-Type: application/json" \
             -H "User-Agent: Mozilla/5.0" \
-            -d "{\"box\":\"WuwaVH\",\"provider\":\"mod\",\"version\":\"${{ steps.cn.outputs.tag }}\"}" | jq -r '.href')
+            -d "$PAYLOAD" | jq -r '.href')
             
           if [ "$DOWNLOAD_URL" != "null" ] && [ -n "$DOWNLOAD_URL" ]; then
-            curl -L "$DOWNLOAD_URL" -o "WuWaVHCN_99_P.pak"
+            curl -f -x socks5h://127.0.0.1:40000 -L "$DOWNLOAD_URL" -o "WuWaVHCN_99_P.pak" \
+              -H "User-Agent: Mozilla/5.0" || true
+              
+            if [ ! -s "WuWaVHCN_99_P.pak" ] || head -n 5 "WuWaVHCN_99_P.pak" | grep -qi "<!doctype html>"; then
+              echo "❌ Lỗi: Bị chặn (nhận trang HTML hoặc HTTP 403)!"
+              exit 1
+            fi
           else
             echo "❌ Lỗi: Không thể lấy link tải WuWa từ DangDev!"
             exit 1
@@ -70,7 +82,7 @@ jobs:
           echo "✅ Tải xong: $(du -sh WuWaVHCN_99_P.pak | cut -f1)"
 
           mkdir -p .github/pak_versions
-          echo "${{ steps.cn.outputs.updated }}" > .github/pak_versions/cn_updated_at.txt
+          echo "${{ steps.cn.outputs.date }}" > .github/pak_versions/cn_updated_at.txt
           echo "${{ steps.cn.outputs.tag }}" >> .github/pak_versions/cn_updated_at.txt
           echo "CN_TAG=${{ steps.cn.outputs.tag }}" >> $GITHUB_ENV
 
@@ -137,41 +149,50 @@ jobs:
           VERSION_JSON=$(curl -sL "https://huggingface.co/datasets/BachMacThanh/DangDevVH/raw/main/NTE/version.json")
           TAG=$(echo "$VERSION_JSON" | jq -r '.version' | sed 's/^v//i')
           
-          DATASET_API=$(curl -sL "https://huggingface.co/api/datasets/BachMacThanh/DangDevVH/commits/main?path=NTE/version.json")
-          UPDATED_UTC=$(echo "$DATASET_API" | jq -r '.[0].date')
-          UPDATED=$(TZ='Asia/Ho_Chi_Minh' date -d "$UPDATED_UTC" +"%Y-%m-%dT%H:%M:%S.000Z")
+          TREE_INFO=$(curl -sL "https://huggingface.co/api/datasets/BachMacThanh/DangDevVH/tree/main/NTE?expand=True")
+          UPDATED_UTC=$(echo "$TREE_INFO" | jq -r '.[] | select(.path == "NTE/version.json") | .lastCommit.date')
+          DATE=$(TZ='Asia/Ho_Chi_Minh' date -d "$UPDATED_UTC" +"%Y-%m-%dT%H:%M:%S.000Z")
 
           echo "tag=$TAG"       >> $GITHUB_OUTPUT
-          echo "updated=$UPDATED" >> $GITHUB_OUTPUT
-          echo "NTE: tag=$TAG | updated_at=$UPDATED"
+          echo "date=$DATE"     >> $GITHUB_OUTPUT
+          echo "NTE: tag=$TAG | date=$DATE"
 
           # Đọc dữ liệu đã lưu
           CACHE=".github/pak_versions/nte_updated_at.txt"
-          OLD_TIME=$([ -f "$CACHE" ] && head -n 1 "$CACHE" || echo "")
-          OLD_TAG=$([ -f "$CACHE" ] && sed -n '2p' "$CACHE" || echo "")
-          echo "old_time=$OLD_TIME" >> $GITHUB_OUTPUT
+          OLD_DATE=$([ -f "$CACHE" ] && head -n 1 "$CACHE" || echo "")
+          OLD_TAG=$([ -f "$CACHE" ] && tail -n 1 "$CACHE" || echo "")
+          
           echo "old_tag=$OLD_TAG" >> $GITHUB_OUTPUT
-          echo "NTE cached: $OLD_TIME | tag=$OLD_TAG"
+          echo "old_date=$OLD_DATE" >> $GITHUB_OUTPUT
+          echo "NTE cached: tag=$OLD_TAG | date=$OLD_DATE"
 
       - name: Build NTEVH_99_P.pak
-        if: steps.nte.outputs.updated != steps.nte.outputs.old_time || steps.nte.outputs.tag != steps.nte.outputs.old_tag || steps.nte.outputs.old_time == ''
+        if: steps.nte.outputs.tag != steps.nte.outputs.old_tag || steps.nte.outputs.date != steps.nte.outputs.old_date || steps.nte.outputs.old_tag == ''
         run: |
-          echo "🔄 Tạo bản từ BachMacThanh NTE..."
+          echo "🔄 Tạo bản từ BachMacThanh NTE (ver: ${{ steps.nte.outputs.tag }})..."
           if [ ! -d "/tmp/wuwa-en-vi" ]; then
             git clone --depth 1 https://github.com/Lai-Hoang/wuwa-viet-hoa.git /tmp/wuwa-en-vi
             sudo apt-get update && sudo apt-get install -y wine unzip
           fi
           
           echo "📥 Lấy link tải và Downloading NTE_VietHoa_Android.zip..."
-          DOWNLOAD_URL=$(curl -sL -X POST "${{ env.DANGDEV_API_URL }}" \
+          PAYLOAD=$(jq -n --arg v "${{ steps.nte.outputs.tag }}" '{box: "NTEVH", provider: "android", version: $v}')
+          
+          DOWNLOAD_URL=$(curl -x socks5h://127.0.0.1:40000 -sL -X POST "${{ env.DANGDEV_API_URL }}" \
             -H "Authorization: Bearer ${{ env.DANGDEV_TOKEN }}" \
             -H "X-Client-Platform: android" \
             -H "Content-Type: application/json" \
             -H "User-Agent: Mozilla/5.0" \
-            -d "{\"box\":\"NTEVH\",\"provider\":\"android\",\"version\":\"${{ steps.nte.outputs.tag }}\"}" | jq -r '.href')
+            -d "$PAYLOAD" | jq -r '.href')
             
           if [ "$DOWNLOAD_URL" != "null" ] && [ -n "$DOWNLOAD_URL" ]; then
-            curl -L "$DOWNLOAD_URL" -o "NTE_Android.zip"
+            curl -f -x socks5h://127.0.0.1:40000 -L "$DOWNLOAD_URL" -o "NTE_Android.zip" \
+              -H "User-Agent: Mozilla/5.0" || true
+              
+            if [ ! -s "NTE_Android.zip" ] || head -n 5 "NTE_Android.zip" | grep -qi "<!doctype html>"; then
+              echo "❌ Lỗi: Bị chặn (nhận trang HTML hoặc HTTP 403)!"
+              exit 1
+            fi
           else
             echo "❌ Lỗi: Không thể lấy link tải NTE từ DangDev!"
             exit 1
@@ -215,7 +236,7 @@ jobs:
           echo "✅ Đã tạo xong bản NoFont: $(du -sh NTEVH_99_P.pak | cut -f1)"
 
           mkdir -p .github/pak_versions
-          echo "${{ steps.nte.outputs.updated }}" > .github/pak_versions/nte_updated_at.txt
+          echo "${{ steps.nte.outputs.date }}" > .github/pak_versions/nte_updated_at.txt
           echo "${{ steps.nte.outputs.tag }}" >> .github/pak_versions/nte_updated_at.txt
           echo "NTE_TAG=${{ steps.nte.outputs.tag }}" >> $GITHUB_ENV
 
@@ -223,6 +244,7 @@ jobs:
       # 4. Commit & Push
       # ─────────────────────────────────────────────
       - name: Commit and push
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -234,17 +256,17 @@ jobs:
             echo "✅ Không có thay đổi, bỏ qua commit."
           else
             MSG="🤖 Auto-sync PAK"
-            [ -n "${CN_TAG}" ] && MSG="$MSG | CN: ${CN_TAG} (${{ steps.cn.outputs.updated }})"
+            [ -n "${CN_TAG}" ] && MSG="$MSG | CN: ${CN_TAG}"
             [ -n "${EN_TAG}" ] && MSG="$MSG | EN: ${EN_TAG} (${{ steps.en.outputs.updated }})"
-            [ -n "${NTE_TAG}" ] && MSG="$MSG | NTE: ${NTE_TAG} (${{ steps.nte.outputs.updated }})"
+            [ -n "${NTE_TAG}" ] && MSG="$MSG | NTE: ${NTE_TAG}"
             git commit -m "$MSG"
             git push
             echo "✅ Pushed: $MSG"
-            echo "PUSHED=true" >> $GITHUB_ENV
+            echo "pushed=true" >> $GITHUB_OUTPUT
           fi
 
-      - name: Send Firebase Notifications
-        if: env.PUSHED == 'true'
+      - name: Send Notifications
+        if: steps.commit.outputs.pushed == 'true'
         env:
           NOTIFY_KEY: ${{ secrets.NOTIFY_KEY }}
           NOTIFY_URL: ${{ secrets.NOTIFY_URL }}
