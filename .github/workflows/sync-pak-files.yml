@@ -60,7 +60,7 @@ jobs:
           echo "🔄 CN pak thay đổi ver: ${{ steps.cn.outputs.tag }} (cũ: ${{ steps.cn.outputs.old_tag }})"
           PAYLOAD=$(jq -n --arg v "${{ steps.cn.outputs.tag }}" '{box: "WuwaVH", provider: "mod", version: $v}')
           
-          DOWNLOAD_URL=$(curl -x socks5h://127.0.0.1:40000 -sL -X POST "${{ env.DANGDEV_API_URL }}" \
+          DOWNLOAD_URL=$(curl -x socks5h://127.0.0.1:9050 -sL -X POST "${{ env.DANGDEV_API_URL }}" \
             -H "Authorization: Bearer ${{ env.DANGDEV_TOKEN }}" \
             -H "X-Client-Platform: android" \
             -H "Content-Type: application/json" \
@@ -68,7 +68,7 @@ jobs:
             -d "$PAYLOAD" | jq -r '.href')
             
           if [ "$DOWNLOAD_URL" != "null" ] && [ -n "$DOWNLOAD_URL" ]; then
-            curl -f -x socks5h://127.0.0.1:40000 -L "$DOWNLOAD_URL" -o "WuWaVHCN_99_P.pak" \
+            curl -f -x socks5h://127.0.0.1:9050 -L "$DOWNLOAD_URL" -o "WuWaVHCN_99_P.pak" \
               -H "User-Agent: Mozilla/5.0" || true
               
             if [ ! -s "WuWaVHCN_99_P.pak" ] || head -n 5 "WuWaVHCN_99_P.pak" | grep -qi "<!doctype html>"; then
@@ -178,7 +178,7 @@ jobs:
           echo "📥 Lấy link tải và Downloading NTE_VietHoa_Android.zip..."
           PAYLOAD=$(jq -n --arg v "${{ steps.nte.outputs.tag }}" '{box: "NTEVH", provider: "android", version: $v}')
           
-          DOWNLOAD_URL=$(curl -x socks5h://127.0.0.1:40000 -sL -X POST "${{ env.DANGDEV_API_URL }}" \
+          DOWNLOAD_URL=$(curl -x socks5h://127.0.0.1:9050 -sL -X POST "${{ env.DANGDEV_API_URL }}" \
             -H "Authorization: Bearer ${{ env.DANGDEV_TOKEN }}" \
             -H "X-Client-Platform: android" \
             -H "Content-Type: application/json" \
@@ -186,7 +186,7 @@ jobs:
             -d "$PAYLOAD" | jq -r '.href')
             
           if [ "$DOWNLOAD_URL" != "null" ] && [ -n "$DOWNLOAD_URL" ]; then
-            curl -f -x socks5h://127.0.0.1:40000 -L "$DOWNLOAD_URL" -o "NTE_Android.zip" \
+            curl -f -x socks5h://127.0.0.1:9050 -L "$DOWNLOAD_URL" -o "NTE_Android.zip" \
               -H "User-Agent: Mozilla/5.0" || true
               
             if [ ! -s "NTE_Android.zip" ] || head -n 5 "NTE_Android.zip" | grep -qi "<!doctype html>"; then
