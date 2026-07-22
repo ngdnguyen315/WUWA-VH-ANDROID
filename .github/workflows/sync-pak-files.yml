@@ -333,7 +333,7 @@ jobs:
               if target_token:
                   message["token"] = target_token
               else:
-                  message["topic"] = "all"
+                  message["topic"] = "tat_ca_nguoi_dung"
 
               payload = {"message": message}
               headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json; UTF-8"}
