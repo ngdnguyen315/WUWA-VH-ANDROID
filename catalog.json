@@ -205,9 +205,9 @@
       "device_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/Ultra%20Perfoma/DeviceProfiles.ini"
     },
     {
-      "name": "Snap/No Textures",
-      "engine_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/No%20Textures/Engine.ini",
-      "device_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/No%20Textures/DeviceProfiles.ini"
+      "name": "Snap/No Texture",
+      "engine_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/No%20Texture/Engine.ini",
+      "device_url": "https://raw.githubusercontent.com/ngdnguyen/WUWA-VH-ANDROID/main/config/Snap/No%20Texture/DeviceProfiles.ini"
     },
     {
       "name": "Snap/High-Ultra",
