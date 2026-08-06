@@ -1,6 +1,6 @@
 ﻿{
-    "version": "1.8.0",
-    "apk_url": "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.8.0/WUWA_VH_1.8.0.apk",
-    "page_url": "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.8.0",
-    "notes": "📢 Cập nhật 1.8.0\r\n\r\n- update BETA TEST WIDGET WUWA\r\n- video demo: https://vt.tiktok.com/ZS4AuP57Y \r\n- update config"
+    "version":  "1.8.1",
+    "apk_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/download/v1.8.1/WUWA_VH_1.8.1.apk",
+    "page_url":  "https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/tag/v1.8.1",
+    "notes":  "📢 Cập nhật 1.8.1\r\n\r\n- update ,fix linh tinh lặt vặt"
 }
