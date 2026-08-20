@@ -4,11 +4,11 @@
   <img src="https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white&style=for-the-badge"/>
 </a>
 
-<a href="https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases/latest">
+<a href="https://github.com/ngdnguyen315/WUWA-VH-ANDROID/releases/latest">
   <img src="https://img.shields.io/github/v/release/ngdnguyen/WUWA-VH-ANDROID?style=for-the-badge&label=Latest%20APK"/>
 </a>
 
-<a href="https://github.com/ngdnguyen/WUWA-VH-ANDROID/releases">
+<a href="https://github.com/ngdnguyen315/WUWA-VH-ANDROID/releases">
   <img src="https://img.shields.io/github/downloads/ngdnguyen/WUWA-VH-ANDROID/total.svg?style=for-the-badge"/>
 </a>
 
