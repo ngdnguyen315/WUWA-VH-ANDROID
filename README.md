@@ -5,11 +5,11 @@
 </a>
 
 <a href="https://github.com/ngdnguyen315/WUWA-VH-ANDROID/releases/latest">
-  <img src="https://img.shields.io/github/v/release/ngdnguyen/WUWA-VH-ANDROID?style=for-the-badge&label=Latest%20APK"/>
+  <img src="https://img.shields.io/github/v/release/ngdnguyen315/WUWA-VH-ANDROID?style=for-the-badge&label=Latest%20APK"/>
 </a>
 
 <a href="https://github.com/ngdnguyen315/WUWA-VH-ANDROID/releases">
-  <img src="https://img.shields.io/github/downloads/ngdnguyen/WUWA-VH-ANDROID/total.svg?style=for-the-badge"/>
+  <img src="https://img.shields.io/github/downloads/ngdnguyen315/WUWA-VH-ANDROID/total.svg?style=for-the-badge"/>
 </a>
 
 <a href="https://fb.com/ngdnguyen315">
@@ -35,6 +35,6 @@ STK: 6196969696969
 
 Nếu thấy app hữu ích, mong bạn ủng hộ một chút để mình có thêm động lực duy trì, cập nhật bản mới, sửa lỗi và tiếp tục làm tốt hơn.
 
-Tác giả app: [ngdnguyen](https://github.com/ngdnguyen)
+Tác giả app: [ngdnguyen315](https://github.com/ngdnguyen315)
 
 Bản dịch được lấy từ: [CallMeDangDev/WuwaVH](https://github.com/CallMeDangDev/WuwaVH)
